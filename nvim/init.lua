@@ -19,7 +19,6 @@ require('PLUG.statusBar') -- lualine
 require('PLUG.TogTerm') --terminal
 --plugin initialization and minimal conf
 
-
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
    --for color preview
    require'colorizer'.setup()

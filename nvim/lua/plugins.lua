@@ -86,12 +86,11 @@ return require('packer').startup(function(use)
     --neo org
     use {
       "nvim-neorg/neorg",
-      lock=true,
-      commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
-      requires = "nvim-lua/plenary.nvim"
-    } 
+      -- -- lock=true,
+      -- -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
+      requires = "nvim-lua/plenary.nvim",
+    }
 
-  
     --discord rich presence
     use{
       'andweeb/presence.nvim',
@@ -240,7 +239,6 @@ return require('packer').startup(function(use)
   --fuzzy file finder 
     use {
       'nvim-telescope/telescope.nvim',
-      lock=true,
       requires = { {'nvim-lua/plenary.nvim'} }
     }
   --auto focus split
