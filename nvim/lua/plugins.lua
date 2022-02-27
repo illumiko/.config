@@ -86,7 +86,8 @@ return require('packer').startup(function(use)
     --neo org
     use {
       "nvim-neorg/neorg",
-      -- -- lock=true,
+      commit = '81326c6f8f2dac905f247d79593a2bf17e656b80',
+      lock=true,
       -- -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
       requires = "nvim-lua/plenary.nvim",
     }
