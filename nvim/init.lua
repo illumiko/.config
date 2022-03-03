@@ -8,10 +8,10 @@ require('PLUG.treesitter') --better syntax highlighting
 require('PLUG.org')
 require('PLUG.completion') --nvim-cmp completion
 require('PLUG.luaSnipConf') --Snippet manager
-require('PLUG.DAP')
+-- require('PLUG.DAP')
 -- require('PLUG.barbar') --buffer like tabs
 require('PLUG.buffline')
-require('PLUG.telescopeConf') --telescope 
+require('PLUG.telescopeConf') --telescope
 require('PLUG.comment') --modern commnet plugin
 require('PLUG.autopairs')  -- autopair setup
 require('PLUG.twilight') -- twilight

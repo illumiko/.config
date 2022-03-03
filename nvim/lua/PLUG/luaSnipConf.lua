@@ -20,9 +20,10 @@ local conds = require("luasnip.extras.expand_conditions")
 
 -- Every unspecified option will be set to the default.
 ls.config.set_config({
-	history = true,
+	history = false,
 	-- Update more often, :h events for more info.
 	updateevents = "TextChanged,TextChangedI",
+  region_check_events = "CursorMoved,CursorHold,InsertEnter",
 	ext_opts = {
 		[types.choiceNode] = {
 			active = {

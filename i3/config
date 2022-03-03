@@ -113,11 +113,11 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 
-set $ws1 "1 Terminal"
-set $ws2 "2 Notes"
-set $ws3 "3 Dev"
-set $ws4 "4 Browser"
-set $ws5 "5 Zoom"
+set $ws1 "1 Utilities"
+set $ws2 "2 Planing"
+set $ws3 "3 Study"
+set $ws4 "4 Dev"
+set $ws5 "5 Browser"
 set $ws6 "6 Settings"
 set $ws7 "7 Random"
 set $ws8 "8"

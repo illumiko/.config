@@ -15,15 +15,16 @@ require('neorg').setup {
     ["core.norg.journal"] = {
       config = { -- Note that this table is optional and doesn't need to be provided
         -- Configuration here
-        jornal_folder = "/journal/",
-        use_folders = true
+        jornal_folder = "../journal/",
+        use_folders = false
       }
     },
     ["core.norg.concealer"] = {}, -- Allows for use of icons
     ["core.norg.dirman"] = { -- Manage your directories with Neorg
       config = {
         workspaces = {
-            my_workspace = "~/Documents/neorg/",
+            my_workspace = "~/Documents/neorg/gtd",
+            example_gtd = "~/Documents/neorg/example_workspaces/gtd/"
         },
         autochdir = true, -- Automatically change the directory to the current workspace's root every time
         index = "index.norg", -- The name of the main (root) .norg file
@@ -32,7 +33,7 @@ require('neorg').setup {
     },
     ["core.gtd.base"] = {
       config = {
-        workspace = "default",
+        workspace = "my_workspace",
         default_lists = {
           inbox = "inbox.norg",
         },
@@ -44,12 +45,12 @@ require('neorg').setup {
         },
         displayers = {
           projects = {
-          show_completed_projects = true,
-          show_projects_without_tasks = true,
+            show_completed_projects = true,
+            show_projects_without_tasks = true,
           },
         },
-        exlucde = {
-          'example.norg'
+        exclude = {
+          "journal",
         },
         custom_tag_completion = true
       }
