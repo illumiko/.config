@@ -3,7 +3,7 @@ require("impatient")
 require('GEN.settings') --base settings
 require('GEN.keymaps') --keymaps
 require('LSP') --Language server xD
-require('PLUG.nvimTree') --file manager
+--require('PLUG.nvimTree') --file manager
 require('PLUG.treesitter') --better syntax highlighting
 require('PLUG.org')
 require('PLUG.completion') --nvim-cmp completion

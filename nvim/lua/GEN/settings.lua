@@ -45,5 +45,6 @@ vim.opt.sidescrolloff = 4
 -- vim.opt.cindent = true
 vim.opt.softtabstop = 2
 vim.textwidth = 120
+vim.opt.relativenumber = true
 -- vim.cmd[[set colorcolumn=100]]
 vim.cmd[[set nonumber]]

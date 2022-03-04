@@ -80,6 +80,9 @@ telescope.setup {
     },
   },
   pickers = {
+    find_files = {
+      theme = "ivy",
+    }
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {
     --   picker_config_key = value,
@@ -94,7 +97,11 @@ telescope.setup {
         -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
         filetypes = {"png", "webp", "jpg", "jpeg"},
         find_cmd = "rg" -- find command (defaults to `fd`)
-      }
+      },
+    file_browser = {
+      theme = "ivy",
+    },
+
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
@@ -102,3 +109,5 @@ telescope.setup {
     -- please take a look at the readme of the extension you want to configure
   },
 }
+telescope.load_extension "file_browser"
+telescope.load_extension 'projects'

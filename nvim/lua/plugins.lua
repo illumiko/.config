@@ -242,6 +242,8 @@ return require('packer').startup(function(use)
       'nvim-telescope/telescope.nvim',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
+  -- file browser
+    use { "nvim-telescope/telescope-file-browser.nvim" }
   --auto focus split
     use {
       "beauwilliams/focus.nvim",
@@ -269,16 +271,15 @@ return require('packer').startup(function(use)
     use 'sunjon/shade.nvim'
 
   --file explorer
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        lock=true
-    }
+    -- use {
+    --     'kyazdani42/nvim-tree.lua',
+    --     requires = 'kyazdani42/nvim-web-devicons',
+    --     lock=true
+    -- }
 
   --updats current root directory(imp for lsp to work)
     use {
       "ahmedkhalf/project.nvim",
-      lock=true,
       config = function()
         require("project_nvim").setup {
         }
