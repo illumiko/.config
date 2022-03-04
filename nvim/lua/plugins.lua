@@ -82,13 +82,12 @@ return require('packer').startup(function(use)
     --     vim.cmd[[let g:wiki_root = '~/Documents/viki']]
     --   end
     -- }
-  
     --neo org
     use {
       "nvim-neorg/neorg",
       commit = '81326c6f8f2dac905f247d79593a2bf17e656b80',
       lock=true,
-      -- -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
+      -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
       requires = "nvim-lua/plenary.nvim",
     }
 
@@ -349,21 +348,54 @@ return require('packer').startup(function(use)
     }
 
   --indent lines
-   -- use{
-   --    'lukas-reineke/indent-blankline.nvim',
-   --    lock=true,
-   --    config = function()
-   --    vim.cmd[[let g:indentLine_fileTypeExclude = ['alpha','norg'] ]]
-   --    vim.cmd[[let g:indent_blankline_use_treesitter = v:true]]
-   --    vim.opt.list = true
-   --    vim.opt.listchars:append("space:⋅")
-   --    require("indent_blankline").setup {
-   --        space_char_blankline = " ",
-   --        show_current_context = true,
-   --        show_current_context_start = true,
-   --    }
-   --    end
-   -- }
+    use {
+      '~/.config/nvim/lua/localPLUG/',
+      config = function ()
+        require('localPLUG.indentScope').setup({
+        draw = {
+            -- Delay (in ms) between event and start of drawing scope indicator
+            delay = 0,
+
+            -- Animation rule for scope's first drawing. A function which, given next
+            -- and total step numbers, returns wait time (in ms). See
+            -- |MiniIndentscope.gen_animation()| for builtin options. To not use
+            -- animation, supply `require('mini.indentscope').gen_animation('none')`.
+            -- animation = --<function: implements constant 20ms between steps>,
+          },
+
+          -- Module mappings. Use `''` (empty string) to disable one.
+          mappings = {
+            -- Textobjects
+            object_scope = 'ii',
+            object_scope_with_border = 'ai',
+
+            -- Motions (jump to respective border line; if not present - body line)
+            goto_top = '[i',
+            goto_bottom = ']i',
+          },
+
+          -- Options which control computation of scope. Buffer local values can be
+          -- supplied in buffer variable `vim.b.miniindentscope_options`.
+          options = {
+            -- Type of scope's border: which line(s) with smaller indent to
+            -- categorize as border. Can be one of: 'both', 'top', 'bottom', 'none'.
+            border = 'both',
+
+            -- Whether to use cursor column when computing reference indent. Useful to
+            -- see incremental scopes with horizontal cursor movements.
+            indent_at_cursor = true,
+
+            -- Whether to first check input line to be a border of adjacent scope.
+            -- Use it if you want to place cursor on function header to get scope of
+            -- its body.
+            try_as_border = false,
+          },
+
+          -- Which character to use for drawing scope indicator
+          symbol = '|',
+                })
+      end
+    }
 
   --comments
     -- use 'tpope/vim-commentary'
@@ -373,11 +405,6 @@ return require('packer').startup(function(use)
     }
     -- use 'JoosepAlviste/nvim-ts-context-commentstring' --provides context for comments
 
-  --buffer tabs
-    --[[ use {
-      'romgrk/barbar.nvim',
-      requires = {'kyazdani42/nvim-web-devicons'}
-    } ]]
     use {
       'akinsho/bufferline.nvim', 
       lock=true,
