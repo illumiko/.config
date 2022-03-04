@@ -68,7 +68,7 @@ vim.g.mapleader = ' '
 
   -- [[nvim tree toggle]]
   -- map('n', '<Leader>e',':NvimTreeToggle<CR>', opts)
-  map('n', '<Leader>e',':Telescope file_browser<CR>', opts)
+  map('n', '<Leader>e',':Telescope file_browser path=%:p:h<CR>', opts)
 
   -- [[no hl]]
   map('n', '<Leader>H',':set hlsearch!<CR>', opts)
