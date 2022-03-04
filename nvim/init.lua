@@ -61,4 +61,3 @@ vim.opt.termguicolors = true -- set term gui colors (most terminals support this
   vim.cmd("colorscheme kanagawa")
 
   -- vim.cmd('hi Normal guibg=NONE')
-
