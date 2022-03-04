@@ -17,11 +17,11 @@ configuration {
 /* colors */
 
 * {
-  al:      #16161d;
-  bg:      #16161d;
-  se:      #2d4f67;
-  fg:      #ffa066;
-  ac:      #76946a;
+  al:      #2e3440;
+  bg:      #2e3440;
+  se:      #e7ecf4;
+  fg:      #81a1c1;
+  ac:      #bf6a6a;
   red:     #EC7875ff;
   green:   #61C766ff;
   yellow:  #FDD835ff;
@@ -37,7 +37,7 @@ configuration {
 
 window {
     border: 						1px;
-    border-color: 					#fabd2f;
+    border-color: 					#bf6a6a;
     border-radius: 					6px;
     padding: 						30;
     width: 							20%;

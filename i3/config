@@ -222,21 +222,39 @@ bindsym $mod+r mode "resize"
       # set $bar-urgent #fb4934
 
   #kangawa
+      # #client
+      # set $client-bg 	            #1f1f28
+      # set $urgent-client-bg       #dcd7ba
+      # set $inactive-client-color2 #1f1f28
+      # set $client-bg-2            #FFA066
+      # set $inactive-client-bg     #1f1f28
+      #
+      # #universal
+      # set $text-color          #dcd7ba
+      # #set $inactive-text-color #676E7D
+      #
+      # #i3bar
+      # set $bar-bg     #1f1f28
+      # set $bar-text   #FFA066
+      # set $bar-active-ws #957FB8
+      # set $bar-urgent #C34043
+
+  # nordfox
       #client
-      set $client-bg 	            #1f1f28
-      set $urgent-client-bg       #dcd7ba
-      set $inactive-client-color2 #1f1f28
-      set $client-bg-2            #FFA066
-      set $inactive-client-bg     #1f1f28
+      set $client-bg 	            #2e3440
+      set $urgent-client-bg       #b9bfca
+      set $inactive-client-color2 #2e3440
+      set $client-bg-2            #81a1c1
+      set $inactive-client-bg     #2e3440
 
       #universal
-      set $text-color          #dcd7ba
+      set $text-color          #b9bfca
       #set $inactive-text-color #676E7D
 
       #i3bar
-      set $bar-bg     #1f1f28
-      set $bar-text   #FFA066
-      set $bar-active-ws #957FB8
+      set $bar-bg     #2e3440
+      set $bar-text   #81a1c1
+      set $bar-active-ws #465780
       set $bar-urgent #C34043
 # window colors
 #                         border                        background                text          indicator

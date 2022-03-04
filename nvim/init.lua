@@ -23,7 +23,8 @@ require('general.colorscheme')
    --for color preview
    require'colorizer'.setup()
    -- for shading inactive splits
-   require'shade'.setup({ overlay_opacity = 80,
+   require'shade'.setup({ 
+    overlay_opacity = 45,
     opacity_step = 1,
     -- keys = {
     --   brightness_up    = '<C-Up>',
