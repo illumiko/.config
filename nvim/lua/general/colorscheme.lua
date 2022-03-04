@@ -20,6 +20,9 @@
     -- vim.cmd[[colorscheme tokyonight]]
 
   --kangawa
-  vim.cmd("colorscheme kanagawa")
+  -- vim.cmd("colorscheme kanagawa")
 
   -- vim.cmd('hi Normal guibg=NONE')
+
+  -- nightfox
+  require('nightfox').load()
