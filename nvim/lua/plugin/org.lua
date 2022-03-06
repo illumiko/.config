@@ -51,6 +51,7 @@ require('neorg').setup {
         },
         exclude = {
           "journal",
+          "progress"
         },
         custom_tag_completion = true
       }

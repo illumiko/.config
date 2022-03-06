@@ -272,7 +272,6 @@ return require('packer').startup(function(use)
       'norcalli/nvim-colorizer.lua',
       lock=true
     }
-
   --shading inactive splits
     use 'sunjon/shade.nvim'
 
@@ -298,40 +297,14 @@ return require('packer').startup(function(use)
       'rmehri01/onenord.nvim', -- oneNord
       'folke/tokyonight.nvim', -- tokyoNight
       'Mofiqul/vscode.nvim', -- codeDark(vsCodeTheme)
-      {'olimorris/onedarkpro.nvim'}, -- onedarkpro
+      -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
+      {
+        'navarasu/onedark.nvim',
+      },
       {"luisiacc/gruvbox-baby"}, --gruvbox
       {
-        'EdenEast/nightfox.nvim',
-        config = function()
-          local nightfox = require('nightfox')
-          -- This function set the configuration of nightfox. If a value is not passed in the setup function
-          -- it will be taken from the default configuration above
-          nightfox.setup({
-            fox = "nordfox", -- change the colorscheme to use nordfox
-            styles = {
-              comments = "italic", -- change style of comments to be italic
-              keywords = "bold", -- change style of keywords to be bold
-              functions = "italic,bold" -- styles can be a comma separated list
-            },
-            inverse = {
-              match_paren = true, -- inverse the highlighting of match_parens
-            },
-            colors = {
-              red = "#FF000", -- Override the red color for MAX POWER
-              bg_alt = "#000000",
-            },
-            hlgroups = {
-              TSPunctDelimiter = { fg = "${red}" }, -- Override a highlight group with the color red
-              LspCodeLens = { bg = "#000000", style = "italic" },
-            }
-          })
-
-          -- Load the configuration set above and apply the colorscheme
-        end
-      },
-      {
       "rebelot/kanagawa.nvim",
-      config = function ()
+      config = function ()--{{{
         require('kanagawa').setup({
           undercurl = false,           -- enable undercurls
           commentStyle = "italic",
@@ -342,13 +315,13 @@ return require('packer').startup(function(use)
           variablebuiltinStyle = "italic",
           specialReturn = true,       -- special highlight for the return keyword
           specialException = true,    -- special highlight for exception handling keywords 
-          transparent = true,        -- do not set background color
-          dimInactive = true,        -- dim inactive window `:h hl-NormalNC`
+          transparent = false,        -- do not set background color
+          dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
           colors = {},
           overrides = {},
         })
       end
-      } -- kangawa
+      } -- kangawa}}}
     }
 
   --treesitter

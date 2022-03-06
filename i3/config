@@ -184,8 +184,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #vars for color
-#
-  #tokyo night
+  #tokyo night{{{
       # #client
       # set $client-bg 	            #2f343f
       # set $urgent-client-bg       #61afef
@@ -201,9 +200,8 @@ bindsym $mod+r mode "resize"
       # set $bar-bg     #000000
       # set $bar-text   #00ffd2
       # set $bar-active-ws #ff4499
-      # set $bar-urgent #004687
-
-  #gruvbox
+      # set $bar-urgent #004687}}}
+  #gruvbox{{{
       # #client
       # set $client-bg 	            #282828
       # set $urgent-client-bg       #fb4934
@@ -219,43 +217,41 @@ bindsym $mod+r mode "resize"
       # set $bar-bg     #282828
       # set $bar-text   #fabd2f
       # set $bar-active-ws #83a598
-      # set $bar-urgent #fb4934
-
-  #kangawa
-      # #client
-      # set $client-bg 	            #1f1f28
-      # set $urgent-client-bg       #dcd7ba
-      # set $inactive-client-color2 #1f1f28
-      # set $client-bg-2            #FFA066
-      # set $inactive-client-bg     #1f1f28
-      #
-      # #universal
-      # set $text-color          #dcd7ba
-      # #set $inactive-text-color #676E7D
-      #
-      # #i3bar
-      # set $bar-bg     #1f1f28
-      # set $bar-text   #FFA066
-      # set $bar-active-ws #957FB8
-      # set $bar-urgent #C34043
-
-  # nordfox
+      # set $bar-urgent #fb4934}}}
+  #kanagawa{{{
       #client
-      set $client-bg 	            #2e3440
-      set $urgent-client-bg       #b9bfca
-      set $inactive-client-color2 #2e3440
-      set $client-bg-2            #81a1c1
-      set $inactive-client-bg     #2e3440
+      set $client-bg 	            #1f1f28
+      set $urgent-client-bg       #dcd7ba
+      set $inactive-client-color2 #1f1f28
+      set $client-bg-2            #FFA066
+      set $inactive-client-bg     #1f1f28
 
       #universal
-      set $text-color          #b9bfca
+      set $text-color          #dcd7ba
       #set $inactive-text-color #676E7D
 
       #i3bar
-      set $bar-bg     #2e3440
-      set $bar-text   #81a1c1
-      set $bar-active-ws #465780
-      set $bar-urgent #C34043
+      set $bar-bg     #1f1f28
+      set $bar-text   #FFA066
+      set $bar-active-ws #957FB8
+      set $bar-urgent #C34043}}}
+  # nordfox{{{
+      # #client
+      # set $client-bg 	            #2e3440
+      # set $urgent-client-bg       #b9bfca
+      # set $inactive-client-color2 #2e3440
+      # set $client-bg-2            #81a1c1
+      # set $inactive-client-bg     #2e3440
+      #
+      # #universal
+      # set $text-color          #b9bfca
+      # #set $inactive-text-color #676E7D
+      #
+      # #i3bar
+      # set $bar-bg     #2e3440
+      # set $bar-text   #81a1c1
+      # set $bar-active-ws #465780
+      # set $bar-urgent #C34043}}}
 # window colors
 #                         border                        background                text          indicator
 client.focused            $inactive-client-color2       $client-bg-2              #000000       $inactive-client-color2
