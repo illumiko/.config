@@ -118,9 +118,16 @@ return require('packer').startup(function(use)
         })
       end
     } 
+    --Lsp Progress
+    use {
+      'j-hui/fidget.nvim',
+      config = function ()
+        require"fidget".setup{}
+      end
+    }
     --use 'windwp/nvim-ts-autotag' --autocompletes html tags
 
-      --nvim greeter
+    --nvim greeter
     use {
       "goolord/alpha-nvim",
       lock=true,

@@ -8,6 +8,7 @@ ls.snippets = {
     ls.parser.parse_snippet("h4", "**** $1"),
     ls.parser.parse_snippet("h5", "***** $1"),
     ls.parser.parse_snippet("h6", "****** $1"),
+    ls.parser.parse_snippet("hajime", "* Things i've to take care of\n* Pomodoro\n* Journal\n"),
   },
   lua = {
     ls.parser.parse_snippet("lvr","local $1 = require('$0')")

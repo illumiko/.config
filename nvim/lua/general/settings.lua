@@ -46,5 +46,6 @@ vim.opt.sidescrolloff = 4
 vim.opt.softtabstop = 2
 vim.textwidth = 120
 vim.opt.relativenumber = true
+vim.opt.foldmethod = "marker"
 -- vim.cmd[[set colorcolumn=100]]
 vim.cmd[[set nonumber]]
