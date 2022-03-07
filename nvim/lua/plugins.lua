@@ -338,6 +338,8 @@ return require('packer').startup(function(use)
       'williamboman/nvim-lsp-installer' --auto lsp installer
     } 
 
+    --Lsp saga
+      use { 'tami5/lspsaga.nvim' }  -- nightly
 
   --snippets
     use {'L3MON4D3/LuaSnip', lock=true} --snippet engine
