@@ -90,7 +90,12 @@ return require('packer').startup(function(use)
       -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
       requires = "nvim-lua/plenary.nvim",
     }
-
+    --[[Table Creator]]
+    use {
+      'dhruvasagar/vim-table-mode',
+      ft = "norg",
+      -- cmd = "tbc"
+    }
     --discord rich presence
     use{
       'andweeb/presence.nvim',
@@ -202,6 +207,60 @@ return require('packer').startup(function(use)
     use {
       'simrat39/symbols-outline.nvim',
       lock=true,
+      config = function ()
+        vim.g.symbols_outline = {
+          highlight_hovered_item = true,
+          show_guides = true,
+          auto_preview = true,
+          position = 'right',
+          relative_width = true,
+          width = 55,
+          auto_close = false,
+          show_numbers = false,
+          show_relative_numbers = false,
+          show_symbol_details = true,
+          preview_bg_highlight = 'Pmenu',
+          keymaps = { -- These keymaps can be a string or a table for multiple keys
+            close = {"<Esc>", "q"},
+            goto_location = "<Cr>",
+            focus_location = "o",
+            hover_symbol = "<C-space>",
+            toggle_preview = "K",
+            rename_symbol = "r",
+            code_actions = "a",
+          },
+            lsp_blacklist = {},
+            symbol_blacklist = {},
+            symbols = {
+            File = {icon = "", hl = "TSURI"},
+            Module = {icon = "", hl = "TSNamespace"},
+            Namespace = {icon = "", hl = "TSNamespace"},
+            Package = {icon = "", hl = "TSNamespace"},
+            Class = {icon = "𝓒", hl = "TSType"},
+            Method = {icon = "ƒ", hl = "TSMethod"},
+            Property = {icon = "", hl = "TSMethod"},
+            Field = {icon = "", hl = "TSField"},
+            Constructor = {icon = "", hl = "TSConstructor"},
+            Enum = {icon = "ℰ", hl = "TSType"},
+            Interface = {icon = "ﰮ", hl = "TSType"},
+            Function = {icon = "", hl = "TSFunction"},
+            Variable = {icon = "", hl = "TSConstant"},
+            Constant = {icon = "", hl = "TSConstant"},
+            String = {icon = "𝓐", hl = "TSString"},
+            Number = {icon = "#", hl = "TSNumber"},
+            Boolean = {icon = "⊨", hl = "TSBoolean"},
+            Array = {icon = "", hl = "TSConstant"},
+            Object = {icon = "⦿", hl = "TSType"},
+            Key = {icon = "🔐", hl = "TSType"},
+            Null = {icon = "NULL", hl = "TSType"},
+            EnumMember = {icon = "", hl = "TSField"},
+            Struct = {icon = "𝓢", hl = "TSType"},
+            Event = {icon = "🗲", hl = "TSType"},
+            Operator = {icon = "+", hl = "TSOperator"},
+            TypeParameter = {icon = "𝙏", hl = "TSParameter"}
+          }
+      }
+      end
     }
 
   -- Useful lua functions used ny lots of plugins
@@ -296,6 +355,7 @@ return require('packer').startup(function(use)
       lock=true,
       'rmehri01/onenord.nvim', -- oneNord
       'folke/tokyonight.nvim', -- tokyoNight
+      'tiagovla/tokyodark.nvim',
       'Mofiqul/vscode.nvim', -- codeDark(vsCodeTheme)
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
       {
@@ -448,22 +508,4 @@ return require('packer').startup(function(use)
         require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
       end
     }
-  --which key never forget your keybinds!!
-    --use {
-     --"zeertzjq/which-key.nvim",
-      --branch="patch-1",
-      --config = function()
-      --require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      --}
-      --end
-    --} 
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  -- if packer_bootstrap then
-  --   require('packer').sync()
-  -- end
 end)
