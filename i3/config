@@ -253,6 +253,22 @@ bindsym $mod+r mode "resize"
       # set $bar-text   #81a1c1
       # set $bar-active-ws #465780
       # set $bar-urgent #C34043}}}
+  # # tokyoDark{{{
+      # #client
+      # set $client-bg 	            #212234
+      # set $urgent-client-bg       #a0a8cd
+      # set $inactive-client-color2 #212234
+      # set $client-bg-2            #ff5d62
+      # set $inactive-client-bg     #212234
+      #
+      # #universal
+      # set $text-color          #a0a8cd
+      #
+      # #i3bar
+      # set $bar-bg     #212234
+      # set $bar-text   #ff5d62
+      # set $bar-active-ws #a485dd
+      # set $bar-urgent #FE6D85}}}
 # window colors
 #                         border                        background                text          indicator
 client.focused            $inactive-client-color2       $client-bg-2              #000000       $inactive-client-color2

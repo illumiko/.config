@@ -402,12 +402,11 @@ return require('packer').startup(function(use)
       use { 'tami5/lspsaga.nvim' }  -- nightly
 
   --snippets
-    use {'L3MON4D3/LuaSnip', lock=true} --snippet engine
-    use {'rafamadriz/friendly-snippets', lock=true} --snippet library
+    use {'L3MON4D3/LuaSnip'} --snippet engine
+    use {'rafamadriz/friendly-snippets'} --snippet library
 
   --cmp (completion)
     use{
-      lock=true,
       'hrsh7th/cmp-nvim-lsp', --cmp source lsp
       'hrsh7th/cmp-nvim-lua', --cmp source nvim lua
       'hrsh7th/cmp-buffer', --cmp source buffer
