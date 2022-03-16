@@ -66,23 +66,7 @@ return require('packer').startup(function(use)
       end
     }
 
-    --debugging
-    use {
-      'mfussenegger/nvim-dap',
-      -- "Pocco81/DAPInstall.nvim",
-      -- {"microsoft/vscode-js-debug", ft = {'js', 'vue'} }
-    }
-    use {"mfussenegger/nvim-dap-python"} -- python
-
-    --vim wiki
-    -- use {
-    --   'lervag/wiki.vim',
-    --   requires = {'lervag/wiki-ft.vim'},
-    --   config = function ()
-    --     vim.cmd[[let g:wiki_root = '~/Documents/viki']]
-    --   end
-    -- }
-    --neo org
+    -- [[norg]]
     use {
       "nvim-neorg/neorg",
       commit = '81326c6f8f2dac905f247d79593a2bf17e656b80',
@@ -96,7 +80,7 @@ return require('packer').startup(function(use)
       ft = "norg",
       -- cmd = "tbc"
     }
-    --discord rich presence
+    -- [[discord rich presence]]
     use{
       'andweeb/presence.nvim',
       lock=true,
@@ -183,8 +167,40 @@ return require('packer').startup(function(use)
           alpha.setup(dashboard.opts)
       end
     }
-    
 
+  -- [[git related plugins]]
+    use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+  -- tag = 'release' -- To use the latest release
+  }
+
+  -- [[buffer swticher]]
+    use {
+      'matbme/JABS.nvim',
+      config = function ()
+        local ui = vim.api.nvim_list_uis()[1]
+        require 'jabs'.setup {
+          position = 'corner', -- center, corner
+          width = 50,
+          height = 10,
+          border = 'shadow', -- none, single, double, rounded, solid, shadow, (or an array or chars)
+          -- Options for preview window
+          preview_position = 'left', -- top, bottom, left, right
+          preview = {
+            width = 40,
+            height = 30,
+            border = 'double', -- none, single, double, rounded, solid, shadow, (or an array or chars)
+          },
+
+          -- the options below are ignored when position = 'center'
+          col = ui.width,  -- Window appears on the right
+          row = ui.height/2, -- Window appears in the vertical middle
+        }
+      end
+    }
   -- nvim terminal
     use {
       'akinsho/toggleterm.nvim',
@@ -263,11 +279,11 @@ return require('packer').startup(function(use)
       end
     }
 
-  -- Useful lua functions used ny lots of plugins
+  -- [[Useful lua functions used ny lots of plugins]]
     use {"nvim-lua/plenary.nvim", opt=false}
 
-  --cursor jumpy cool
-    --[[ use {
+  -- [[cursor jumpy cool]]
+    use {
       'edluffy/specs.nvim',
       config = function ()
         require('specs').setup{ 
@@ -288,58 +304,36 @@ return require('packer').startup(function(use)
           },
         }
       end
-    } ]]
+    }
 
-  --matchup
+  -- [[matchup]]
     use {
       'andymass/vim-matchup',
       lock=true,
     }
 
-  --same text change fast
+  -- [[same text change fast]]
     use {
       'osyo-manga/vim-over',
       lock=true,
     }
 
-  --fuzzy file finder 
+  -- [[Telescope]]
     use {
       'nvim-telescope/telescope.nvim',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
-  -- file browser
+  -- [[file browser]]
     use { "nvim-telescope/telescope-file-browser.nvim" }
-  --auto focus split
-    use {
-      "beauwilliams/focus.nvim",
-      lock=true,
-      config = function()
-        require("focus").setup({number = true, width=50})
-      end
-    }
 
-  --pair brackets
-    -- use 'p00f/nvim-ts-rainbow'
-
-  --highlighting a range of lines
-    use {'winston0410/cmd-parser.nvim', lock=true}
-    use {'winston0410/range-highlight.nvim', lock=true}
-    
-
-  --color preview
+  -- [[color preview]]
     use {
       'norcalli/nvim-colorizer.lua',
+      config = function ()
+        require'colorizer'.setup()
+      end,
       lock=true
     }
-  --shading inactive splits
-    use 'sunjon/shade.nvim'
-
-  --file explorer
-    -- use {
-    --     'kyazdani42/nvim-tree.lua',
-    --     requires = 'kyazdani42/nvim-web-devicons',
-    --     lock=true
-    -- }
 
   --updats current root directory(imp for lsp to work)
     use {
@@ -358,13 +352,10 @@ return require('packer').startup(function(use)
       'tiagovla/tokyodark.nvim',
       'Mofiqul/vscode.nvim', -- codeDark(vsCodeTheme)
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
-      {
-        'navarasu/onedark.nvim',
-      },
+      { 'navarasu/onedark.nvim'},
       {"luisiacc/gruvbox-baby"}, --gruvbox
-      {
-      "rebelot/kanagawa.nvim",
-      config = function ()--{{{
+      { "rebelot/kanagawa.nvim",
+        config = function ()--{{{
         require('kanagawa').setup({
           undercurl = false,           -- enable undercurls
           commentStyle = "italic",
@@ -379,9 +370,10 @@ return require('packer').startup(function(use)
           dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
           colors = {},
           overrides = {},
-        })
-      end
-      } -- kangawa}}}
+          })
+        end
+      --}}}
+      } -- kangawa
     }
 
   --treesitter
@@ -398,8 +390,8 @@ return require('packer').startup(function(use)
       'williamboman/nvim-lsp-installer' --auto lsp installer
     } 
 
-    --Lsp saga
-      use { 'tami5/lspsaga.nvim' }  -- nightly
+  --Lsp saga
+    use { 'tami5/lspsaga.nvim' }  -- nightly
 
   --snippets
     use {'L3MON4D3/LuaSnip'} --snippet engine
@@ -420,7 +412,7 @@ return require('packer').startup(function(use)
   --indent lines
     use {
       '~/.config/nvim/lua/localPLUG/',
-      config = function ()
+      config = function ()--{{{
         require('localPLUG.indentScope').setup({
         draw = {
             -- Delay (in ms) between event and start of drawing scope indicator
@@ -464,7 +456,7 @@ return require('packer').startup(function(use)
           -- Which character to use for drawing scope indicator
           symbol = '|',
                 })
-      end
+      end--}}}
     }
 
   --comments
@@ -493,7 +485,7 @@ return require('packer').startup(function(use)
     -- use 'rstacruz/vim-closer'
     use {
       'windwp/nvim-autopairs',
-      lock=true,
+      lock=true
     }
     -- use 'jiangmiao/auto-pairs'
 

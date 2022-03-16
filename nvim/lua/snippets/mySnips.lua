@@ -55,7 +55,7 @@ ls.snippets = {
               result.end_min = "0" .. result.end_min
             end
           end
-          return "{ " .. ses .. " H}" .. " [ "..result.start_time().." -> "..result.end_time().." ]"
+          return "{" .. ses .. " H}" .. " [ "..result.start_time().." -> "..result.end_time().." ]"
         end
         result.adder = function ()
           local time = vim.fn.input("Enter session time (H:M) = ")
@@ -75,7 +75,7 @@ ls.snippets = {
         return " " .. result.adder()
       end),
       t({"","  > "}), i(0)
-      --[[ f(function()
+      --[[ f(function(){{{
         local input = vim.fn.input(" Enter time in HH:MM or MM format: ")
         local plus_hour, plus_min
         if input:find(":") == nil then
@@ -111,7 +111,7 @@ ls.snippets = {
           added_time = plus_min .. "M"
         end
         return " [" .. added_time .. "]" .. "(" .. time  .. " -> " .. hour .. ":" .. min .. ")"
-      end, {}), ]]
+      end, {}), ]]--}}}
     }),
   },
   lua = {
