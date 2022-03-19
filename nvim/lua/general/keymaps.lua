@@ -3,7 +3,10 @@ local opts = {noremap = true, silent = true}
 map('n', '<Space>', '<NOP>', opts)
 vim.g.mapleader = ' '
 
+vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
 --[===[normal mode]===]
+  -- [[better window movemnt]]
+    map("n","<leader>w",":lua require('nvim-window').pick()<CR>",opts)
   -- [[Norg]]
     map('n', '<leader>oNs', ':NeorgStart<CR>', opts)
     map('n', '<leader>oNjtd', ':Neorg journal today<CR>', opts)
@@ -16,6 +19,7 @@ vim.g.mapleader = ' '
     map("n", "<leader>fFp", "<cmd>lua require('telescope.builtin').find_files({cwd='~/Documents/Projects/'})<CR>", opts) -- opening telescope in Projects dir
     map("n", "<leader>fFc", "<cmd>lua require('telescope.builtin').find_files({cwd='~/.config/'})<CR>", opts) --  opening telescope in config folder
     map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts) --  opening telescope in config folder
+    map("n", "<leader>G", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opts) --  opening telescope in config folder
   -- map("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
   -- [[lsp]]
     map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -67,7 +71,7 @@ vim.g.mapleader = ' '
     map('n', "<S-h>",":BufferLineCyclePrev<CR>", opts)
     map('n', "<S-l>",":BufferLineCycleNext<CR>", opts)
     map('n', "<Leader>bc",":BufferLinePickClose<CR>", opts)
-    map('n', "<Leader>bp",":BufferLinePick<CR>", opts)
+    map("n", "<leader>B", "<cmd>lua require('telescope.builtin').buffers()<CR>", opts) --bufferPicker
     map('n', "<Leader>bsd",":BufferLineSortByRelativeDirectory<CR>", opts)
     map('n', "<Leader>bsD",":BufferLineSortByDirectory<CR>", opts)
     map('n', "<Leader>bse",":BufferLineSortByExtension<CR>", opts)

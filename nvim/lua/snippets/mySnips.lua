@@ -29,9 +29,15 @@ ls.snippets = {
     ls.parser.parse_snippet("h3", "*** $1"),
     ls.parser.parse_snippet("h4", "**** $1"),
     ls.parser.parse_snippet("h5", "***** $1"),
-    ls.parser.parse_snippet("h6", "****** $1"),
     ls.parser.parse_snippet("hajime", "* Things i've to take care of\n ** code\n* Pomodoro\n ** breaks\n* Journal\n"),
-    s({trig="ses", docstring="ses"}, {
+    ls.parser.parse_snippet("Ud", "#contexts Udvash"),
+    ls.parser.parse_snippet("UdEx", "#contexts UdvashExam"),
+    ls.parser.parse_snippet("UdExP", "#contexts UdvashExamPrep"),
+    ls.parser.parse_snippet("Todo", "#contexts todo"),
+    ls.parser.parse_snippet("code", "#contexts code"),
+    ls.parser.parse_snippet("pre", "#contexts PreTestPrep"),
+    s({trig="ses", docstring="ses"}, 
+    {
       t("** Session "), i(1,"1 "),
       f(function ()
         result = {}

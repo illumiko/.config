@@ -69,13 +69,13 @@ require('bufferline').setup {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "",
+    separator_style = '',
     enforce_regular_tabs = false,
     always_show_bufferline = true,
     sort_by = 'id',
     function(buffer_a, buffer_b)
       -- add custom logic
       return buffer_a.modified > buffer_b.modified
-    end
-  }
+    end,
+  },
 }

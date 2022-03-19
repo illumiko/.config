@@ -8,6 +8,7 @@ require('plugin.treesitter') --better syntax highlighting
 require('plugin.org')
 require('plugin.completion') --nvim-cmp completion
 require('plugin.luasnip_conf') --Snippet manager
+require('plugin.null_ls')
 -- require('plugin.DAP')
 -- require('plugin.barbar') --buffer like tabs
 require('plugin.buffline')
