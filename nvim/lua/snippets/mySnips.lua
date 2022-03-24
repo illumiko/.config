@@ -33,11 +33,11 @@ ls.snippets = {
     ls.parser.parse_snippet("Ud", "#contexts Udvash"),
     ls.parser.parse_snippet("UdEx", "#contexts UdvashExam"),
     ls.parser.parse_snippet("UdExP", "#contexts UdvashExamPrep"),
-    ls.parser.parse_snippet("Todo", "#contexts rodo"),
+    ls.parser.parse_snippet("Todo", "#contexts Todo"),
     ls.parser.parse_snippet("code", "#contexts Code"),
     ls.parser.parse_snippet("pre", "#contexts PreTestPrep"),
     ls.parser.parse_snippet("sHw", "#contexts SchoolHw"),
-    s({trig="ses", docstring="ses"}, 
+    s({trig="ses", docstring="ses"},
     {
       t("** Session "), i(1,"1 "),
       f(function ()
