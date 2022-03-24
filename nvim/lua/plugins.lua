@@ -168,7 +168,7 @@ return require('packer').startup(function(use)
     --use 'windwp/nvim-ts-autotag' --autocompletes html tags
 
     -- [[nvim greeter]]
-    use {
+    use {--{{{
       "goolord/alpha-nvim",
       lock=true,
       requires = { 'kyazdani42/nvim-web-devicons' },
@@ -217,7 +217,7 @@ return require('packer').startup(function(use)
           -- end
           alpha.setup(dashboard.opts)
       end
-    }
+    }--}}}
 
   --[[shadenunsed split]]
   -- use {
@@ -230,22 +230,21 @@ return require('packer').startup(function(use)
   --   end
   -- }
     --
-    -- use {
-    --   'sunjon/shade.nvim',
-    --    config = function ()
-    --      require'shade'.setup({
-    --      overlay_opacity = 50,
-    --      opacity_step = 1,
-    --      keys = {
-    --        brightness_up    = '<C-Up>',
-    --        brightness_down  = '<C-Down>',
-    --        toggle           = '<Leader>s',
-    --      }
-    --    })
-    --    vim.cmd[[highlight guibg=NONE]]
-    --   end
-    -- }
-    --
+    use {
+      'sunjon/shade.nvim',
+       config = function ()
+         require'shade'.setup({
+         overlay_opacity = 50,
+         opacity_step = 1,
+         keys = {
+           brightness_up    = '<C-Up>',
+           brightness_down  = '<C-Down>',
+           toggle           = '<Leader>s',
+         }
+       })
+      end
+    }
+
 --[[
     use {
       "jceb/blinds.nvim",
