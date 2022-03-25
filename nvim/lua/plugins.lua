@@ -219,6 +219,8 @@ return require('packer').startup(function(use)
       end
     }--}}}
 
+  --[[focus]]
+  use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
   --[[shadenunsed split]]
   --[[session]]
   use "tpope/vim-obsession"
