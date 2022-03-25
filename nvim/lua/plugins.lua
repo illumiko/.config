@@ -220,17 +220,17 @@ return require('packer').startup(function(use)
     }--}}}
 
   --[[shadenunsed split]]
-  -- use {
-  --   "blueyed/vim-diminactive",
-  --   config = function ()
-  --     vim.cmd[[ let g:diminactive_use_syntax = 1]]
-  --     vim.cmd[[let g:diminactive_enable_focus = 1]]
-  --     vim.cmd[[let g:diminactive_use_colorcolumn = 0]]
-  --     
-  --   end
-  -- }
-    --
-    use {
+  use {
+    "blueyed/vim-diminactive",
+    config = function ()
+      vim.cmd[[ let g:diminactive_use_syntax = 1]]
+      vim.cmd[[let g:diminactive_enable_focus = 1]]
+      vim.cmd[[let g:diminactive_use_colorcolumn = 1]]
+     
+    end
+  }
+
+    --[[ use {
       'sunjon/shade.nvim',
        config = function ()
          require'shade'.setup({
@@ -243,7 +243,7 @@ return require('packer').startup(function(use)
          }
        })
       end
-    }
+    } ]]
 
 --[[
     use {
