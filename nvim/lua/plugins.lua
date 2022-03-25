@@ -41,58 +41,53 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
-  --transparent nvim
-  use 'xiyaowong/nvim-transparent'
-  -- use 'tribela/vim-transparent'
-	use {
-    'lewis6991/impatient.nvim',
-    lock=true,
-    config = {
-      -- Move to lua dir so impatient.nvim can cache it
-      compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+  --[[transparent nvim]]
+    use 'xiyaowong/nvim-transparent'
+    use {
+      'lewis6991/impatient.nvim',
+      lock=true,
+      config = {
+        -- Move to lua dir so impatient.nvim can cache it
+        compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+      }
     }
-	}
 
   use {
     "wbthomason/packer.nvim",
     lock=true
   }
 
-    --[[whcich Key]]
+  --[[whcich Key]]
     use {
       "folke/which-key.nvim",
       config = function()
-        require("which-key").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
+        require("which-key").setup({})
       end
     }
 
-    --[[window picker]]
+  --[[window picker]]
     use {
       'https://gitlab.com/yorickpeterse/nvim-window.git',
-      config = function ()
-       vim.cmd[[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]]
-      require('nvim-window').setup({
-        -- The characters available for hinting windows.
-        chars = {
-          'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-          'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-        },
-        -- A group to use for overwriting the Normal highlight group in the floating
-        -- window. This can be used to change the background color.
-        normal_hl = 'BlackOnLightYellow',
-        -- The highlight group to apply to the line that contains the hint characters.
-        -- This is used to make them stand out more.
-        hint_hl = 'Bold',
-        -- The border style to use for the floating window.
-        border = 'single'
-      })
-      end
+       config = function ()--{{{
+         vim.cmd[[hi BlackOnLightYellow guifg=#000000 guibg=#f2de91]]
+         require('nvim-window').setup({
+           -- The characters available for hinting windows.
+           chars = {
+             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+             'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+           },
+           -- A group to use for overwriting the Normal highlight group in the floating
+           -- window. This can be used to change the background color.
+           normal_hl = 'BlackOnLightYellow',
+           -- The highlight group to apply to the line that contains the hint characters.
+           -- This is used to make them stand out more.
+           hint_hl = 'Bold',
+           -- The border style to use for the floating window.
+           border = 'single'
+         })
+       end--}}}
     }
-    -- [[norg]]
+  -- [[norg]]
     use {
       "nvim-neorg/neorg",
       commit = '81326c6f8f2dac905f247d79593a2bf17e656b80',
@@ -100,13 +95,13 @@ return require('packer').startup(function(use)
       -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
       requires = "nvim-lua/plenary.nvim",
     }
-    --[[Table Creator]]
+  --[[Table Creator]]
     use {
       'dhruvasagar/vim-table-mode',
       ft = "norg",
       -- cmd = "tbc"
     }
-    --[[autosave]]
+  --[[autosave]]
     use {
       "Pocco81/AutoSave.nvim",
       config = function ()
@@ -131,11 +126,11 @@ return require('packer').startup(function(use)
         )
       end--}}}
     }
-    -- [[discord rich presence]]
+  --[[discord rich presence]]
     use{
       'andweeb/presence.nvim',
       lock=true,
-      config = function ()
+      config = function ()--{{{
         require("presence"):setup({
           -- General options
           auto_update         = true,
@@ -156,9 +151,9 @@ return require('packer').startup(function(use)
           workspace_text      = "Working on %s",
           line_number_text    = "Line %s out of %s",
         })
-      end
-    } 
-    -- [[Lsp Progress]]
+      end--}}}
+    }
+  -- [[Lsp Progress]]
     use {
       'j-hui/fidget.nvim',
       config = function ()
@@ -167,7 +162,7 @@ return require('packer').startup(function(use)
     }
     --use 'windwp/nvim-ts-autotag' --autocompletes html tags
 
-    -- [[nvim greeter]]
+  -- [[nvim greeter]]
     use {--{{{
       "goolord/alpha-nvim",
       lock=true,
@@ -220,11 +215,12 @@ return require('packer').startup(function(use)
     }--}}}
 
   --[[focus]]
-  use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
-  --[[shadenunsed split]]
-  --[[session]]
-  use "tpope/vim-obsession"
+    use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
+  --[[session]]
+    use "tpope/vim-obsession"
+
+  --[[shade]]
     use {
       'sunjon/shade.nvim',
        config = function ()
@@ -240,45 +236,30 @@ return require('packer').startup(function(use)
       end
     }
 
---[[
+  --[[git related plugins]]
     use {
-      "jceb/blinds.nvim",
-      config = function ()
-        vim.cmd[[let g:blinds_guibg = "#000000"]]
-  --    end
- --   }
---]]
-  -- [[git related plugins]]
-    use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-  -- tag = 'release' -- To use the latest release
-  }
+      'lewis6991/gitsigns.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      },
+    }
 
-  -- nvim terminal
+  --[nvim terminal]]
     use {
       'akinsho/toggleterm.nvim',
       lock=true,
     }
-  
-  --zenMode
-    use {
-      "folke/zen-mode.nvim",
-      "folke/twilight.nvim",
-      lock=true,
-    }
-  --lua functions for nvim
+
+  --[lua functions for nvim]]
     use {
       "nvim-lua/popup.nvim",
       lock=true,
     }
 
-  --symbol outline
+  --[symbol outline]]
     use {
       'simrat39/symbols-outline.nvim',
-      lock=true,
+      lock=true,--{{{
       config = function ()
         vim.g.symbols_outline = {
           highlight_hovered_item = true,
@@ -332,13 +313,13 @@ return require('packer').startup(function(use)
             TypeParameter = {icon = "𝙏", hl = "TSParameter"}
           }
       }
-      end
+      end--}}}
     }
 
-  -- [[Useful lua functions used ny lots of plugins]]
+  --[[Useful lua functions used ny lots of plugins]]
     use {"nvim-lua/plenary.nvim", opt=false}
 
-  -- [[cursor jumpy cool]]
+  --[[cursor jumpy cool]]
     use {
       'edluffy/specs.nvim',
       config = function ()
@@ -362,27 +343,27 @@ return require('packer').startup(function(use)
       end
     }
 
-  -- [[matchup]]
+  --[[matchup]]
     use {
       'andymass/vim-matchup',
       lock=true,
     }
 
-  -- [[same text change fast]]
+  --[[same text change fast]]
     use {
       'osyo-manga/vim-over',
       lock=true,
     }
 
-  -- [[Telescope]]
+  --[[Telescope]]
     use {
       'nvim-telescope/telescope.nvim',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
-  -- [[file browser]]
+  --[[file browser]]
     use { "nvim-telescope/telescope-file-browser.nvim" }
 
-  -- [[color preview]]
+  --[[color preview]]
     use {
       'norcalli/nvim-colorizer.lua',
       config = function ()
@@ -391,7 +372,7 @@ return require('packer').startup(function(use)
       lock=true
     }
 
-  --updats current root directory(imp for lsp to work)
+  --[[updats current root directory(imp for lsp to work)]]
     use {
       "ahmedkhalf/project.nvim",
       config = function()
@@ -400,7 +381,7 @@ return require('packer').startup(function(use)
       end
     }
 
-  --colorscheme
+  --[[colorscheme]]
     use{
       lock=true,
       'rmehri01/onenord.nvim', -- oneNord
@@ -443,32 +424,32 @@ return require('packer').startup(function(use)
       } -- kangawa
     }
 
-  --treesitter
-   use {
-     'nvim-treesitter/nvim-treesitter',
-     commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
-     run = ':TSUpdate'
-   }
+  --[[treesitter]]
+     use {
+       'nvim-treesitter/nvim-treesitter',
+       commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
+       run = ':TSUpdate'
+     }
 
-  --native lsp stuff
+  --[[native lsp stuff]]
     use{
       lock=true,
       'neovim/nvim-lspconfig', --lsp base
       'williamboman/nvim-lsp-installer' --auto lsp installer
     } 
   --[[null-ls]]
-  use{
-    "jose-elias-alvarez/null-ls.nvim",
-  }
+    use{
+      "jose-elias-alvarez/null-ls.nvim",
+    }
 
-  --Lsp saga
+  --[[Lsp saga]]
     use { 'tami5/lspsaga.nvim' }  -- nightly
 
-  --snippets
+  --[[snippets]]
     use {'L3MON4D3/LuaSnip'} --snippet engine
     use {'rafamadriz/friendly-snippets'} --snippet library
 
-  --cmp (completion)
+  --[[cmp (completion)]]
     use{
       'hrsh7th/cmp-nvim-lsp', --cmp source lsp
       'hrsh7th/cmp-nvim-lua', --cmp source nvim lua
@@ -479,33 +460,7 @@ return require('packer').startup(function(use)
       'saadparwaiz1/cmp_luasnip', --for snippets
       'onsails/lspkind-nvim', --customizing cmp
     }
-
-  -- --[[indent lines]]
-    -- use {--{{{
-    --   "lukas-reineke/indent-blankline.nvim",
-    --   config = function ()
-    --     vim.opt.list = true
-    --     vim.cmd [[highlight IndentBlanklineIndent1 guifg=#4e5173 gui=nocombine]]
-    --     vim.opt.listchars:append("space:⋅")
-    --     vim.cmd[[let g:indentLine_fileTypeExclude = ['alpha'] ]]
-    --     vim.cmd[[let g:indent_blankline_use_treesitter = v:true]]
-    --     require("indent_blankline").setup {
-    --       space_char_blankline = " ",
-    --       -- show_current_context = true,
-    --       -- show_current_context_start = true,
-    --       char_highlight_list = {
-    --         "IndentBlanklineIndent1",
-    --         "IndentBlanklineIndent1",
-    --         "IndentBlanklineIndent1",
-    --         "IndentBlanklineIndent1",
-    --         "IndentBlanklineIndent1",
-    --         "IndentBlanklineIndent1",
-    --       },
-    --     }
-    --   end
-    --
-    -- }--}}}
-
+  --[[indent line]]
     use {
       '~/.config/nvim/lua/localPLUG/',
       config = function ()--{{{
@@ -537,7 +492,7 @@ return require('packer').startup(function(use)
             border = 'both',
             -- Whether to use cursor column when computing reference indent. Useful to
             -- see incremental scopes with horizontal cursor movements.
-            indent_at_cursor = false,
+            indent_at_cursor = true,
             -- Whether to first check input line to be a border of adjacent scope.
             -- Use it if you want to place cursor on function header to get scope of
             -- its body.
@@ -548,49 +503,30 @@ return require('packer').startup(function(use)
                 })
       end--}}}
     }
-
-  --[[focus split]]
-    --[[ use {
-      "beauwilliams/focus.nvim",
-      commit="4f47c6b9255e77ee83c8a485bc168d780b64df46",
-      config = function()
-        require("focus").setup({
-          minwidth = 30,
-          width=50,
-        })
-      end
-    } ]]
   --[[comments]]
-    -- use 'tpope/vim-commentary'
     use {
       'numToStr/Comment.nvim',
       lock=true
     }
-    -- use 'JoosepAlviste/nvim-ts-context-commentstring' --provides context for comments
-
+  --[[buffer management]]
     use {
-      'akinsho/bufferline.nvim', 
+      'akinsho/bufferline.nvim',
       lock=true,
       requires = 'kyazdani42/nvim-web-devicons'
     }
-
-  --status bar
+  --[[status bar]]
     use {
       'hoob3rt/lualine.nvim',
       lock=true,
       requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-
-  --auto pair
-  
     -- use 'rstacruz/vim-closer'
+  --[[nvim-autopairs]]
     use {
       'windwp/nvim-autopairs',
       lock=true
     }
-    -- use 'jiangmiao/auto-pairs'
-
-  --hoppppp
+  --[[hoppppp]]
     use {
       'phaazon/hop.nvim',
       lock=true,
