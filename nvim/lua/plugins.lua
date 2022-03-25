@@ -220,17 +220,10 @@ return require('packer').startup(function(use)
     }--}}}
 
   --[[shadenunsed split]]
-  use {
-    "blueyed/vim-diminactive",
-    config = function ()
-      vim.cmd[[ let g:diminactive_use_syntax = 1]]
-      vim.cmd[[let g:diminactive_enable_focus = 1]]
-      vim.cmd[[let g:diminactive_use_colorcolumn = 1]]
-     
-    end
-  }
+  --[[session]]
+  use "tpope/vim-obsession"
 
-    --[[ use {
+    use {
       'sunjon/shade.nvim',
        config = function ()
          require'shade'.setup({
@@ -243,7 +236,7 @@ return require('packer').startup(function(use)
          }
        })
       end
-    } ]]
+    }
 
 --[[
     use {
@@ -414,6 +407,7 @@ return require('packer').startup(function(use)
       'Mofiqul/vscode.nvim', -- codeDark(vsCodeTheme)
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
       { 'navarasu/onedark.nvim'},
+      {"https://github.com/dylanaraps/wal.vim"},
       {
         "sainnhe/gruvbox-material",
         config = function ()--{{{
