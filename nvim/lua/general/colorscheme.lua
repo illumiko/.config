@@ -44,6 +44,6 @@ vim.cmd("colorscheme tokyodark")
 -- }
 -- vim.cmd('colorscheme onedark')
 -- --}}}
--- vim.cmd('colorscheme everforest')
+vim.cmd('colorscheme kanagawa')
 
 

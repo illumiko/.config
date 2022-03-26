@@ -415,7 +415,6 @@ return require('packer').startup(function(use)
         "https://github.com/sainnhe/everforest",
         config = function ()
           vim.cmd([[ 
-            set background=dark
             let g:everforest_background = 'hard'
             let g:everforest_transparent_background = 0
             let g:everforest_enable_bold = 1
