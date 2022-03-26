@@ -56,12 +56,32 @@ return require('packer').startup(function(use)
     "wbthomason/packer.nvim",
     lock=true
   }
-
-  --[[whcich Key]]
-    use {
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup({})
+  --[[pretty folds]]
+  use{
+    'anuvyklack/pretty-fold.nvim',
+    config = function()
+      require('pretty-fold').setup{
+         keep_indentation = false,
+         fill_char = '━',
+         sections = {
+            left = {
+               '━ ', function() return string.rep('*', vim.v.foldlevel) end, ' ━┫', 'content', '┣'
+            },
+            right = {
+               '┫ ', 'number_of_folded_lines', ': ', 'percentage', ' ┣━━',
+            }
+         }
+      }
+      require('pretty-fold.preview').setup {
+         key = 'h', -- choose 'h' or 'l' key
+      }
+          end
+        }
+        --[[whcich Key]]
+          use {
+            "folke/which-key.nvim",
+            config = function()
+              require("which-key").setup({})
       end
     }
 
@@ -391,6 +411,19 @@ return require('packer').startup(function(use)
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
       { 'navarasu/onedark.nvim'},
       {"https://github.com/dylanaraps/wal.vim"},
+      {
+        "https://github.com/sainnhe/everforest",
+        config = function ()
+          vim.cmd([[ 
+            set background=dark
+            let g:everforest_background = 'hard'
+            let g:everforest_transparent_background = 0
+            let g:everforest_enable_bold = 1
+            let g:everforest_ui_contrast = 'high'
+          ]])
+        end
+
+      },
       {
         "sainnhe/gruvbox-material",
         config = function ()--{{{

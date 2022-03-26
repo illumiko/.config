@@ -15,7 +15,6 @@ require('plugin.buffline')
 require('plugin.telescope_conf') --telescope
 require('plugin.comment') --modern commnet plugin
 require('plugin.autopairs')  -- autopair setup
-require('plugin.twilight') -- twilight
 require('plugin.status_bar') -- lualine
 require('plugin.tog_term') --terminal
 require('plugin.git_signs') --git signs
