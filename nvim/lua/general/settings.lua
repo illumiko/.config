@@ -46,5 +46,4 @@ vim.opt.sidescrolloff = 15
 vim.opt.softtabstop = 2
 vim.textwidth = 120
 vim.opt.foldmethod = "marker"
--- vim.cmd[[set colorcolumn=100]]
-vim.cmd[[set nonumber]]
+vim.cmd[[set sessionoptions="buffers,curdir,folds,tabpages,winsize"]]

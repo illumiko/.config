@@ -3,6 +3,7 @@ local opts = {noremap = true, silent = true}
 map('n', '<Space>', '<NOP>', opts)
 vim.g.mapleader = ' '
 
+
 vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
 --[===[normal mode]===]
   -- [[better window movemnt]]
@@ -29,7 +30,7 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
     map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     map('n', '<leader>Sd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 
   -- [[packer stuff]]
     map('n', '<leader>Pi',':PackerInstall<CR>', opts)
