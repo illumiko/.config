@@ -1,14 +1,14 @@
--- tokyodark {{{
-vim.g.tokyodark_transparent_background = false
-vim.g.tokyodark_enable_italic_comment = true
-vim.g.tokyodark_enable_italic = true
-vim.g.tokyodark_color_gamma = "1.0"
-vim.cmd("colorscheme tokyodark")
---}}}
+-- -- tokyodark {{{
+-- vim.g.tokyodark_transparent_background = false
+-- vim.g.tokyodark_enable_italic_comment = true
+-- vim.g.tokyodark_enable_italic = true
+-- vim.g.tokyodark_color_gamma = "1.0"
+-- vim.cmd("colorscheme tokyodark")
+-- --}}}
 --tokyonight{{{
--- vim.g.tokyonight_style = 'night'
--- vim.cmd([[colorscheme tokyonight]])
---}}}
+vim.g.tokyonight_style = 'night'
+vim.cmd([[colorscheme tokyonight]])
+----}}}
 -- --onedark--{{{
 -- require('onedark').setup  {
 --     -- Main options --
@@ -44,6 +44,9 @@ vim.cmd("colorscheme tokyodark")
 -- }
 -- vim.cmd('colorscheme onedark')
 -- --}}}
-vim.cmd('colorscheme kanagawa')
+vim.g.material_style = 'deep ocean'
+vim.cmd([[
+    colorscheme material
+]])
 
 

@@ -114,13 +114,13 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 
-set $ws1 "1 Utilities"
-set $ws2 "2 Planing"
-set $ws3 "3 Study"
-set $ws4 "4 Dev"
-set $ws5 "5 Browser"
-set $ws6 "6 Break"
-set $ws7 "7 Random"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
@@ -325,14 +325,12 @@ client.background       $bg
   bindsym $mod+b exec kitty -e bluetoothctl
   bindsym $mod+F4 exec amixer -D pulse sset Master 5%-
   bindsym $mod+F5 exec amixer -D pulse sset Master 5%+
-
-  bindsym $mod+t exec tdrop -ma -s dropdown kitty 
+#for launching script with keybinds
+  bindsym $mod+t exec lua ~/.config/i3/scripts/layoutToggle.lua
 
   #locking i3
   bindsym $mod+Shift+x exec i3lock --color 1e1e1e
   focus_follows_mouse no
-
-
 
   #start ups
     #for having opacity for rofi and for transition effect
@@ -355,11 +353,10 @@ client.background       $bg
     assign [class="Indicator-stickynotes"] $ws1 #stickynotes
     assign [class="zoom"] $ws5   #zoom
     exec_always pulseaudio
-    exec polybar
-    exec wal -R
+    exec wal -R for having prev colorscheme
 
   #with i3 gaps
-    for_window [class=".*"] border pixel 2
+    for_window [class=".*"] border pixel 4
     gaps inner 15
     gaps outer 10
     # smart_gaps on

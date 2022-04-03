@@ -37,7 +37,8 @@ ls.snippets = {
     ls.parser.parse_snippet("code", "#contexts Code"),
     ls.parser.parse_snippet("pre", "#contexts PreTestPrep"),
     ls.parser.parse_snippet("sHw", "#contexts SchoolHw"),
-    s({trig="ses", docstring="ses"},
+    --session future{{{
+    s({trig="sesf", docstring="sesf"},
     {
       t("** Session "), i(1,"1 "),
       f(function ()
@@ -82,44 +83,56 @@ ls.snippets = {
         return " " .. result.adder()
       end),
       t({"","  > "}), i(0)
-      --[[ f(function(){{{
-        local input = vim.fn.input(" Enter time in HH:MM or MM format: ")
-        local plus_hour, plus_min
-        if input:find(":") == nil then
-          plus_hour = 00
-          plus_min = input
-        else
-          plus_hour, plus_min = input:match("(%d+):(%d+)")
+    }),--}}}
+    --session past{{{
+    s({trig="sesp", docstring="sesp"},
+    {
+      t("** Session "), i(1,"1 "),
+      f(function ()
+        result = {}
+        result.end_hour = os.date("%I") -- defining start hour
+        result.end_min = os.date("%M") -- defining start min
+        result.status = function ()
+          return os.date("%p") -- finding wheter pm or am
         end
-        local time = os.date("%I:%M")
-        local hour = tonumber(string.sub(time, 1, 2))
-        local min = tonumber(string.sub(time, 4, 5))
-        -- add plus_hour and plus_min to current time
-        hour = hour + tonumber(plus_hour)
-        min = min + tonumber(plus_min)
-        -- if minutes are more than 60, add 1 hour and subtract 60 minutes
-        if min > 60 then
-          hour = hour + 1
-          min = min - 60
+        result.format = function (ses)
+          local hour = tonumber(result.start_hour)
+          local min = tonumber(result.start_min)
+
+          if hour < 10 then
+            -- result.end_hour = string.sub(tostring(result.end_hour),2,2)
+            result.end_hour = string.sub(tostring(result.end_hour),2,2)
+          end
+          if min < 0 then
+            result.start_min =  60 + min -- as min a negative value
+            result.start_hour =  hour - 1
+            print(result.start_min)
+          end
+          if result.start_min < 10 then
+            result.start_min = "0" .. result.start_min
+          end
+          return "{" .. ses .. " H}" .. " [ "..result.start_time().." -> "..result.end_time().." ]"
         end
-        if hour > 12 then
-          hour = hour - 12
+        result.adder = function ()
+          local time = vim.fn.input("Enter session time (H:M) = ")
+          local hour = string.sub(time,1,1)
+          local min = string.sub(time,3,4)
+          result.start_hour = tonumber(result.end_hour) - tonumber(hour)
+          result.start_min = tonumber(result.end_min) - tonumber(min)
+          return result.format(time)
+          -- result.format(result.end_hour,result.end_min)
         end
-        if min < 10 then
-          min = "0" .. min
+        result.end_time = function ()
+          return result.end_hour .. ":" .. result.end_min .. result.status()
         end
-        if hour < 10 then
-          hour = string.sub(hour, 2,2)
+        result.start_time = function ()
+          return result.start_hour .. ":" .. result.start_min .. result.status()
         end
-        local added_time
-        if plus_hour ~= 00 then
-          added_time = plus_hour .. ":" .. plus_min .. " H"
-        else
-          added_time = plus_min .. "M"
-        end
-        return " [" .. added_time .. "]" .. "(" .. time  .. " -> " .. hour .. ":" .. min .. ")"
-      end, {}), ]]--}}}
-    }),
+        return " " .. result.adder()
+      end),
+      t({"","  > "}), i(0)
+    }),--}}}
+
   },
   lua = {
     ls.parser.parse_snippet("lvr","local $1 = require('$0')")
