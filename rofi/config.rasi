@@ -1,15 +1,15 @@
 configuration {
-	font: "Victor Mono Medium Bold 12";
-	fixed-num-lines: true;
-	sidebar-mode: false;
-	scroll-method: 0;
-	click-to-exit: true;
-	theme: "~/.config/rofi/themes/dt-center.rasi";
-	combi-hide-mode-prefix: false;
-	display-window: "";
-	display-windowcd: "";
-	display-run: "";
-	display-ssh: "";
-	display-drun: "";
-	display-combi: "";
+font: "Victor Mono Medium Bold 12";
+fixed-num-lines: true;
+sidebar-mode: false;
+scroll-method: 0;
+cjick-to-exit: true;
+combi-hide-mode-prefix: false;
+display-window: "";
+display-windowcd: "";
+display-run: "";
+display-ssh: "";
+display-drun: "";
+display-combi: "";
 }
+@theme "~/.config/rofi/themes/dt-center.rasi"

@@ -1,4 +1,5 @@
 local ls = require("luasnip")
+    local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -19,9 +20,10 @@ local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
-ls.snippets = {
-  all = {
-  },
+ls.add_snippets(nil,{
+    all = {
+        ls.parser.parse_snippet("test", "tessssssssst")
+    },
   norg = {
 --{{{ norg snippet
     --[[ ls.parser.parse_snippet("ses", "- [ ] session $1 {$2} [$0->to]"), ]]
@@ -163,7 +165,8 @@ ls.snippets = {
         let tx = openReq.result.transaction("{1}", "readwrite").objectStore("{2}"){}
       ]=],{i(1),rep(1),i(0)})
       ),--}}}
-
   }
+})
+--[==[[
 
-}
+--]==]

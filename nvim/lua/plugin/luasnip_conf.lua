@@ -44,6 +44,9 @@ ls.autosnippets = {
 			t("autosnippet"),
 		}),
 	},
+  lua = {
+    ls.parser.parse_snippet("lvr","local $1 = require('$0')")
+  },
 }
 
 -- in a lua file: search lua-, then c-, then all-snippets.
@@ -55,11 +58,11 @@ ls.autosnippets = {
 -- will need to extend the table yourself instead of setting a new one.
 ]]
 
+require("snippets.mySnips")
 require("luasnip/loaders/from_vscode").load({ include = { "python" } }) -- Load only python snippets
 -- The directories will have to be structured like eg. <https://github.com/rafamadriz/friendly-snippets> (include
 -- a similar `package.json`)
 require("luasnip/loaders/from_vscode").load({ paths = { "./my-snippets" } }) -- Load snippets from my-snippets folder
-require("snippets.mySnips")
 
 -- You can also use lazy loading so you only get in memory snippets of languages you use
 require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well

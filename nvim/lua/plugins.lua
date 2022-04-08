@@ -525,8 +525,11 @@ return require('packer').startup(function(use)
     use { 'tami5/lspsaga.nvim' }  -- nightly
 
   --[[snippets]]
-    use {'L3MON4D3/LuaSnip'} --snippet engine
-    use {'rafamadriz/friendly-snippets'} --snippet library
+    use {
+        'L3MON4D3/LuaSnip',
+        lock = true
+    } --snippet engine
+    use {'rafamadriz/friendly-snippets', lock = true} --snippet library
 
   --[[cmp (completion)]]
     use{
@@ -538,6 +541,7 @@ return require('packer').startup(function(use)
       'hrsh7th/nvim-cmp', --base of cmp
       'saadparwaiz1/cmp_luasnip', --for snippets
       'onsails/lspkind-nvim', --customizing cmp
+      lock = true
     }
   --[[indent line]]
     use {
