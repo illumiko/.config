@@ -56,6 +56,8 @@ return require('packer').startup(function(use)
     "wbthomason/packer.nvim",
     lock=true
   }
+  --[[multi cursor]]
+  use{'mg979/vim-visual-multi',} 
   --[[pretty folds]]
   use{
     'anuvyklack/pretty-fold.nvim',

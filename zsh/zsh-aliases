@@ -22,6 +22,7 @@ alias jspg='nvim ~/Documents/Projects/Testing/webDev/js_playground/app.js'
 alias pypg='nvim ~/Documents/Projects/Testing/python/PPG/playground.py'
 alias shpg='nvim ~/Documents/Projects/Testing/bashScript/playground/playground.sh'
 alias luapg='nvim ~/Documents/Projects/Testing/lua/playground/playground.lua'
+alias tmux='tmux -f ~/.config/tmux/.tmux.conf'
 #####################################################
 
 
