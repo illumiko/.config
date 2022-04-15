@@ -44,10 +44,10 @@ vim.cmd([[colorscheme tokyonight]])
 -- }
 -- vim.cmd('colorscheme onedark')
 -- --}}}
--- vim.g.material_style = 'deep ocean'
--- vim.cmd([[
---     colorscheme material
--- ]])
+vim.g.material_style = 'deep ocean'
+vim.cmd([[
+    colorscheme material
+]])
 vim.cmd([[hi Folded guibg=#ddd]])
 
 

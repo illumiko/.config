@@ -41,7 +41,7 @@ ls.add_snippets(nil,{
     ls.parser.parse_snippet("pre", "#contexts PreTestPrep"),
     ls.parser.parse_snippet("sHw", "#contexts SchoolHw"),
     --session future{{{
-    s({trig="sesf", docstring="sesf"},
+    s({trig="sF", docstring="sF"},
     {
       t("** Session "), i(1,"1 "),
       f(function ()
@@ -62,10 +62,12 @@ ls.add_snippets(nil,{
           if min >= 60 then
             result.end_min = min - 60
             result.end_hour = 1 + hour
-            if result.end_min < 10 then
-              result.end_min = "0" .. result.end_min
-            end
           end
+          if tonumber(result.end_min) < 10 then
+            print("hello")
+            result.end_min = "0" .. result.end_min
+          end
+          print(result.end_min)
           return "{" .. ses .. " H}" .. " [ "..result.start_time().." -> "..result.end_time().." ]"
         end
         result.adder = function ()
@@ -88,7 +90,7 @@ ls.add_snippets(nil,{
       t({"","  > "}), i(0)
     }),--}}}
     --session past{{{
-    s({trig="sesp", docstring="sesp"},
+    s({trig="sP", docstring="sP"},
     {
       t("** Session "), i(1,"1 "),
       f(function ()
