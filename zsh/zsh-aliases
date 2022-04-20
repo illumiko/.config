@@ -23,6 +23,7 @@ alias pypg='nvim ~/Documents/Projects/Testing/python/PPG/playground.py'
 alias shpg='nvim ~/Documents/Projects/Testing/bashScript/playground/playground.sh'
 alias luapg='nvim ~/Documents/Projects/Testing/lua/playground/playground.lua'
 alias tmux='tmux -f ~/.config/tmux/.tmux.conf'
+alias yt-dlp='yt-dlp --config-locations "~/.config/yt-dlp.conf"'
 #####################################################
 
 

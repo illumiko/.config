@@ -327,6 +327,8 @@ client.background       $bg
   bindsym $mod+F5 exec amixer -D pulse sset Master 5%+
 #for launching script with keybinds
   bindsym $mod+t exec lua ~/.config/i3/scripts/layoutToggle.lua
+#for emoji-pciker
+  bindsym $mod+F1 exec NO_CLEANUP=true ~/Apps/emoji_keyboard/x11-emoji-picker-*.AppImage --appimage-extract-and-run
 
   #locking i3
   bindsym $mod+Shift+x exec i3lock --color 1e1e1e
