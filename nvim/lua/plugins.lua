@@ -408,14 +408,17 @@ return require('packer').startup(function(use)
       lock=true,
       'rmehri01/onenord.nvim', -- oneNord
       'folke/tokyonight.nvim', -- tokyoNight
+      "rose-pine/neovim", -- rose pine
       'tiagovla/tokyodark.nvim',
       'Mofiqul/vscode.nvim', -- codeDark(vsCodeTheme)
+      "kvrohit/rasmus.nvim",
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
       { 'navarasu/onedark.nvim'},
-      {'marko-cerovac/material.nvim'},
-
+      {"https://github.com/dylanaraps/wal.vim"},
+      {'tanvirtin/monokai.nvim'},
+      {"AlphaTechnolog/pywal.nvim", as = "pywal"},
       {
-          "https://github.com/dylanaraps/wal.vim",
+          'marko-cerovac/material.nvim',
           config = function ()
               require('material').setup({
                     contrast = {
@@ -611,6 +614,8 @@ return require('packer').startup(function(use)
       'windwp/nvim-autopairs',
       lock=true
     }
+  --[[nvim-ts-rainbow]]
+  use "https://github.com/p00f/nvim-ts-rainbow"
   --[[hoppppp]]
     use {
       'phaazon/hop.nvim',

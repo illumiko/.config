@@ -5,10 +5,10 @@
 -- vim.g.tokyodark_color_gamma = "1.0"
 -- vim.cmd("colorscheme tokyodark")
 -- --}}}
---tokyonight{{{
-vim.g.tokyonight_style = 'night'
-vim.cmd([[colorscheme tokyonight]])
---}}}
+-- --tokyonight{{{
+-- vim.g.tokyonight_style = 'night'
+-- vim.cmd([[colorscheme tokyonight]])
+-- --}}}
 -- --onedark--{{{
 -- require('onedark').setup  {
 --     -- Main options --
@@ -44,10 +44,12 @@ vim.cmd([[colorscheme tokyonight]])
 -- }
 -- vim.cmd('colorscheme onedark')
 -- --}}}
-vim.g.material_style = 'deep ocean'
-vim.cmd([[
-    colorscheme material
-]])
+-- --{{{material
+-- vim.g.material_style = 'deep ocean'
+-- vim.cmd([[
+--     colorscheme material
+-- ]])--}}}
+vim.cmd("colorscheme rose-pine")
 vim.cmd([[hi Folded guibg=#ddd]])
 
 
