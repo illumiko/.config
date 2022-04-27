@@ -243,7 +243,7 @@ return require('packer').startup(function(use)
     use "tpope/vim-obsession"
 
   --[[shade]]
-    use {
+    --[[ use {
       'sunjon/shade.nvim',
        config = function ()
          require'shade'.setup({
@@ -256,7 +256,7 @@ return require('packer').startup(function(use)
          }
        })
       end
-    }
+    } ]]
 
   --[[git related plugins]]
     use {

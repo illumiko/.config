@@ -43,8 +43,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec xfce4-terminal 
-bindsym $mod+Return exec kitty
-# bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty 
 
 
 # kill focused window
@@ -320,9 +320,9 @@ client.background       $bg
   bindsym $mod+c exec flameshot gui
   #bindsym $mod+o exec code .config/i3/config
   bindsym $mod+o exec okular
-  bindsym $mod+g exec kitty -e ranger
-  bindsym $mod+m exec kitty -e mocp
-  bindsym $mod+b exec kitty -e bluetoothctl
+  bindsym $mod+g exec alacritty -e ranger
+  # bindsym $mod+m exec alacritty -e wal -i -n ~/Pictures/Wallpaper/yourname/3.png
+  bindsym $mod+b exec alacritty -e bluetoothctl
   bindsym $mod+F4 exec amixer -D pulse sset Master 5%-
   bindsym $mod+F5 exec amixer -D pulse sset Master 5%+
 #for launching script with keybinds
@@ -357,6 +357,7 @@ client.background       $bg
     assign [class="Indicator-stickynotes"] $ws1 #stickynotes
     assign [class="zoom"] $ws5   #zoom
     exec_always pulseaudio
+    exec autotiling
     exec wal -R for having prev colorscheme
 
   #with i3 gaps
