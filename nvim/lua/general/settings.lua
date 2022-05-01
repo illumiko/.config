@@ -44,8 +44,8 @@ vim.opt.scrolloff = 4 -- is one of my fav
 vim.opt.sidescrolloff = 4
 -- vim.opt.cindent = true
 vim.opt.softtabstop = 4
-vim.textwidth = 120--{{{
-vim.opt.relativenumber = true
+-- vim.textwidth = 120--{{{
+-- vim.opt.relativenumber = true
 vim.opt.foldmethod = "marker"--}}}
--- vim.cmd[[set colorcolumn=100]]
+vim.cmd[[set nocursorline]]
 vim.cmd([[hi VertSplit guibg=none guifg=none]])

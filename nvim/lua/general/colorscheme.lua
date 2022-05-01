@@ -1,5 +1,5 @@
 -- tokyodark {{{
-vim.g.tokyodark_transparent_background = false
+vim.g.tokyodark_transparent_background = true
 vim.g.tokyodark_enable_italic_comment = true
 vim.g.tokyodark_enable_italic = true
 vim.g.tokyodark_color_gamma = "1.0"
@@ -44,13 +44,13 @@ vim.cmd("colorscheme tokyodark")
 -- }
 -- vim.cmd('colorscheme onedark')
 -- --}}}
--- --{{{material
+-- --material{{{
 -- vim.g.material_style = 'deep ocean'
 -- vim.cmd([[
 --     colorscheme material
--- ]])
--- --}}}
+-- ]])}}}
 -- vim.cmd("colorscheme rasmus")
-vim.cmd([[hi Folded guibg=#ddd]])
-
+vim.cmd([=[
+hi Folded guibg=#ddd
+]=])
 

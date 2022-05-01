@@ -19,3 +19,10 @@ require('plugin.status_bar') -- lualine
 require('plugin.tog_term') --terminal
 require('plugin.git_signs') --git signs
 require('general.colorscheme')
+
+
+
+
+
+
+

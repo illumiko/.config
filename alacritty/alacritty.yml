@@ -25,12 +25,12 @@ font:
     style: italic
 colors:
   normal:
-    black: "#080808"
-    red: "#64656E"
-    green: "#433A91"
-    yellow: "#5B569E"
-    blue: "#5D5FEC"
-    magenta: "#966AC0"
-    cyan: "#6EAFF8"
-    white: "#c5cfde"
-
+    black:   "#101116"
+    red:     "#3A558F"
+    green:   "#61708C"
+    yellow:  "#718B94"
+    blue:    "#7E86C8"
+    magenta: "#9F9A9E"
+    cyan:    "#D1B0A7"
+    white:   "#e7dad3"
+              #a19893

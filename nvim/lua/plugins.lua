@@ -42,11 +42,30 @@ packer.init {
 
 return require('packer').startup(function(use)
   --[[transparent nvim]]
-    use 'xiyaowong/nvim-transparent'
+    use {
+        'xiyaowong/nvim-transparent',
+        config = function ()
+          require("transparent").setup({
+            enable = true, -- boolean: enable transparent
+            extra_groups = { -- table/string: additional groups that should be cleared
+              -- In particular, when you set it to 'all', that means all available groups
+              -- example of akinsho/nvim-bufferline.lua
+              "BufferLineTabClose",
+              "BufferlineBufferSelected",
+              "BufferLineFill",
+              "BufferLineBackground",
+              "BufferLineSeparator",
+              "BufferLineIndicatorSelected",
+            },
+            exclude = {}, -- table: groups you don't want to clear
+          })
+        end
+    }
     use {
       'lewis6991/impatient.nvim',
       lock=true,
       config = {
+
         -- Move to lua dir so impatient.nvim can cache it
         compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
       }
