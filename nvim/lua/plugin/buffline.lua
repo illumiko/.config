@@ -26,9 +26,9 @@ require('bufferline').setup {
         return vim.fn.fnamemodify(buf.name, ':t:r')
       end
     end,
-    max_name_length = 18,
-    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    tab_size = 15,
+    max_name_length = 10,
+    max_prefix_length = 10, -- prefix used when a buffer is de-duplicated
+    tab_size = 5,
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -69,7 +69,7 @@ require('bufferline').setup {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = '',
+    separator_style = {"",""},
     enforce_regular_tabs = false,
     always_show_bufferline = true,
     sort_by = 'id',

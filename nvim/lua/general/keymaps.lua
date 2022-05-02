@@ -73,9 +73,11 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
         map('n', "<A-k>",":m .-2<CR>==", opts)
 
     -- [[bufferline]]
-        map('n', "<S-h>",":BufferLineCyclePrev<CR>", opts)
+        map("n", "<S-h>", ":TablineBufferPrevious<cr>",opts)
+        map("n", "<S-l>", ":TablineBufferNext<cr>",opts)
+        --[[ map('n', "<S-h>",":BufferLineCyclePrev<CR>", opts)
         map('n', "<S-l>",":BufferLineCycleNext<CR>", opts)
-        map('n', "<Leader>bc",":BufferLinePickClose<CR>", opts)
+        map('n', "<Leader>bc",":BufferLinePickClose<CR>", opts) ]]
         map("n", "<S-Tab>", "<cmd>lua require('telescope.builtin').buffers()<CR>", opts) --bufferPicker
 --[[
         map('n', "<Leader>bsd",":BufferLineSortByRelativeDirectory<CR>", opts)

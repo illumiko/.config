@@ -16,7 +16,7 @@ require('neorg').setup {
       config = { -- Note that this table is optional and doesn't need to be provided
         -- Configuration here
         jornal_folder = "../journal/",
-        use_folders = false
+        strategy = "flat",
       }
     },
     ["core.norg.concealer"] = {}, -- Allows for use of icons

@@ -11,7 +11,7 @@ require('plugin.completion') --nvim-cmp completion
 require('plugin.luasnip_conf') --Snippet manager
 require('plugin.null_ls')
 -- require('plugin.DAP')
-require('plugin.buffline')
+-- require('plugin.buffline')
 require('plugin.telescope_conf') --telescope
 require('plugin.comment') --modern commnet plugin
 require('plugin.autopairs')  -- autopair setup

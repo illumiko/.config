@@ -41,6 +41,108 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
+  --[[scroll bar]]
+    use{
+        "petertriho/nvim-scrollbar",
+        config = function ()
+          require("scrollbar").setup({--{{{
+              show = true,
+              set_highlights = true,
+              folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
+              max_lines = false, -- disables if no. of lines in buffer exceeds this
+              handle = {
+                  text = " ",
+                  color = nil,
+                  cterm = nil,
+                  highlight = "CursorColumn",
+                  hide_if_all_visible = true, -- Hides handle if all lines are visible
+              },
+              marks = {
+                  Search = {
+                      text = { "-", "=" },
+                      priority = 0,
+                      color = nil,
+                      cterm = nil,
+                      highlight = "Search",
+                  },
+                  Error = {
+                      text = { "-", "=" },
+                      priority = 1,
+                      color = nil,
+                      cterm = nil,
+                      highlight = "DiagnosticVirtualTextError",
+                  },
+                  Warn = {
+                      text = { "-", "=" },
+                      priority = 2,
+                      color = nil,
+                      cterm = nil,
+                      highlight = "DiagnosticVirtualTextWarn",
+                  },
+                  Info = {
+                      text = { "-", "=" },
+                      priority = 3,
+                      color = nil,
+                      cterm = nil,
+                      highlight = "DiagnosticVirtualTextInfo",
+                  },
+                  Hint = {
+                      text = { "-", "=" },
+                      priority = 4,
+                      color = nil,
+                      cterm = nil,
+                      highlight = "DiagnosticVirtualTextHint",
+                  },
+                  Misc = {
+                      text = { "-", "=" },
+                      priority = 5,
+                      color = nil,
+                      cterm = nil,
+                      highlight = "Normal",
+                  },
+              },
+              excluded_buftypes = {
+                  "terminal",
+              },
+              excluded_filetypes = {
+                  "prompt",
+                  "TelescopePrompt",
+              },
+              autocmd = {
+                  render = {
+                      "BufWinEnter",
+                      "TabEnter",
+                      "TermEnter",
+                      "WinEnter",
+                      "CmdwinLeave",
+                      "TextChanged",
+                      "VimResized",
+                      "WinScrolled",
+                  },
+              },
+              handlers = {
+                  diagnostic = true,
+                  search = false, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
+              },
+          })--}}}
+        end
+    }
+  --[[better hlsearch]]
+    use {
+        'kevinhwang91/nvim-hlslens',
+        config = function ()
+          local kopts = {noremap = true, silent = true}
+          vim.api.nvim_set_keymap('n', 'n',
+              [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
+          vim.api.nvim_set_keymap('n', 'N',
+              [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
+          vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+          vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+          vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+          vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+          vim.api.nvim_set_keymap('n', '<Leader>l', ':noh<CR>', kopts)
+        end
+    }
   --[[transparent nvim]]
     use {
         'xiyaowong/nvim-transparent',
@@ -131,7 +233,7 @@ return require('packer').startup(function(use)
   -- [[norg]]
     use {
       "nvim-neorg/neorg",
-      commit = '81326c6f8f2dac905f247d79593a2bf17e656b80',
+      -- commit = '81326c6f8f2dac905f247d79593a2bf17e656b80',
       lock=true,
       -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
       requires = "nvim-lua/plenary.nvim",
@@ -616,10 +718,38 @@ return require('packer').startup(function(use)
       lock=true
     }
   --[[buffer management]]
-    use {
+    --[[ use {
       'akinsho/bufferline.nvim',
       lock=true,
       requires = 'kyazdani42/nvim-web-devicons'
+    } ]]
+    use {
+      'kdheepak/tabline.nvim',
+      config = function()
+        require'tabline'.setup {
+          -- Defaults configuration options
+          enable = true,
+          options = {
+          -- If lualine is installed tabline will use separators configured in lualine by default.
+          -- These options can be used to override those settings.
+            section_separators = {'', ''},
+            component_separators = {'', ''},
+            max_bufferline_percent = 100, -- set to nil by default, and it uses vim.o.columns * 2/3
+            show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
+            show_devicons = true, -- this shows devicons in buffer section
+            show_bufnr = false, -- this appends [bufnr] to buffer section,
+            show_filename_only = false, -- shows base filename only instead of relative path in filename
+            modified_icon = "+ ", -- change the default modified icon
+            modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
+            show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
+          }
+        }
+        vim.cmd[[
+          set guioptions-=e " Use showtabline in gui vim
+          set sessionoptions+=tabpages,globals " store tabpages and globals in session
+        ]]
+      end,
+      requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
     }
   --[[status bar]]
     use {

@@ -1,5 +1,5 @@
 -- for neorg
-local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+--[[ local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 parser_configs.norg = {
   install_info = {
     files = { "src/parser.c", "src/scanner.cc" },
@@ -22,7 +22,7 @@ parser_configs.norg_table = {
     files = { "src/parser.c" },
     branch = "main"
   },
-}
+} ]]
 
 
 -- treesitter startup
@@ -55,8 +55,6 @@ require'nvim-treesitter.configs'.setup {
   },
   ensure_installed = {
     "norg",
-    "norg_meta",
-    "norg_table",
     'javascript',
     'vue',
     'html',
