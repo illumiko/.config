@@ -742,12 +742,12 @@ return require('packer').startup(function(use)
             modified_icon = "+ ", -- change the default modified icon
             modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
             show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
-          }
+          } 
         }
-        vim.cmd[[
+        vim.cmd[=[
           set guioptions-=e " Use showtabline in gui vim
           set sessionoptions+=tabpages,globals " store tabpages and globals in session
-        ]]
+        ]=]
       end,
       requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
     }
