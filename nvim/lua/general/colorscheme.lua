@@ -50,7 +50,4 @@ vim.cmd("colorscheme tokyodark")
 --     colorscheme material
 -- ]])}}}
 -- vim.cmd("colorscheme rasmus")
-vim.cmd([=[
-hi Folded guibg=#ddd
-]=])
 
