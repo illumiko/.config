@@ -320,8 +320,7 @@ client.background       $bg
   bindsym $mod+c exec flameshot gui
   #bindsym $mod+o exec code .config/i3/config
   bindsym $mod+o exec okular
-  bindsym $mod+g exec alacritty -e ranger
-  bindsym $mod+m exec alacritty -e ncmpcpp
+  bindsym $mod+shift+f floating toggle
   bindsym $mod+b exec alacritty -e bluetoothctl
   bindsym $mod+F4 exec amixer -D pulse sset Master 5%-
   bindsym $mod+F5 exec amixer -D pulse sset Master 5%+
@@ -357,10 +356,10 @@ client.background       $bg
     assign [class="Indicator-stickynotes"] $ws1 #stickynotes
     assign [class="zoom"] $ws5   #zoom
     exec_always pulseaudio
-    exec autotiling
     exec wal -R for having prev colorscheme
 
   #with i3 gaps
+    for_window [instance=kitty] sticky enable
     for_window [class=".*"] border pixel 4
     gaps inner 15
     gaps outer 10

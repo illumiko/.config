@@ -180,8 +180,9 @@ return require('packer').startup(function(use)
   --[[multi cursor]]
   use{'mg979/vim-visual-multi',} 
   --[[pretty folds]]
-  use{
+  --[[ use{
     'anuvyklack/pretty-fold.nvim',
+    requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
     config = function()
       require('pretty-fold').setup{
          keep_indentation = false,
@@ -199,7 +200,8 @@ return require('packer').startup(function(use)
          key = 'h', -- choose 'h' or 'l' key
       }
           end
-        }
+
+        } ]]
         --[[whcich Key]]
           use {
             "folke/which-key.nvim",
@@ -234,7 +236,7 @@ return require('packer').startup(function(use)
     use {
       "nvim-neorg/neorg",
       -- commit = '81326c6f8f2dac905f247d79593a2bf17e656b80',
-      lock=true,
+      -- lock=true,
       -- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
       requires = "nvim-lua/plenary.nvim",
     }
