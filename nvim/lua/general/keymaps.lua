@@ -73,17 +73,29 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
         map('n', "<A-k>",":m .-2<CR>==", opts)
 
     -- [[bufferline]]
-        map("n", "<S-h>", ":TablineBufferPrevious<cr>",opts)
-        map("n", "<S-l>", ":TablineBufferNext<cr>",opts)
-        --[[ map('n', "<S-h>",":BufferLineCyclePrev<CR>", opts)
-        map('n', "<S-l>",":BufferLineCycleNext<CR>", opts)
-        map('n', "<Leader>bc",":BufferLinePickClose<CR>", opts) ]]
+        map('n', '<S-h>', ':BufferPrevious<CR>', opts)
+        map('n', '<S-l>', ':BufferNext<CR>', opts)
+        -- Re-order to previous/next
+        map('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
+        map('n', '<A->>', ' :BufferMoveNext<CR>', opts)
+        -- Goto buffer in position...
+        map('n', '<A-1>', ':BufferGoto 1<CR>', opts)
+        map('n', '<A-2>', ':BufferGoto 2<CR>', opts)
+        map('n', '<A-3>', ':BufferGoto 3<CR>', opts)
+        map('n', '<A-4>', ':BufferGoto 4<CR>', opts)
+        map('n', '<A-5>', ':BufferGoto 5<CR>', opts)
+        map('n', '<A-6>', ':BufferGoto 6<CR>', opts)
+        map('n', '<A-7>', ':BufferGoto 7<CR>', opts)
+        map('n', '<A-8>', ':BufferGoto 8<CR>', opts)
+        map('n', '<A-9>', ':BufferGoto 9<CR>', opts)
+        map('n', '<A-0>', ':BufferLast<CR>', opts)
+        -- Close buffer
+        map('n', '<A-c>', ':BufferClose<CR>', opts)
+        -- Sort automatically by...
+        map('n', '<Space>bb', ':BufferOrderByBufferNumber<CR>', opts)
+        map('n', '<Space>bd', ':BufferOrderByDirectory<CR>', opts)
+        map('n', '<Space>bl', ':BufferOrderByLanguage<CR>', opts)
         map("n", "<S-Tab>", "<cmd>lua require('telescope.builtin').buffers()<CR>", opts) --bufferPicker
---[[
-        map('n', "<Leader>bsd",":BufferLineSortByRelativeDirectory<CR>", opts)
-        map('n', "<Leader>bsD",":BufferLineSortByDirectory<CR>", opts)
-        map('n', "<Leader>bse",":BufferLineSortByExtension<CR>", opts)
-]]
 
     --vertical split
         map('n', "<Leader>v",":vsp<CR>", opts)

@@ -19,10 +19,9 @@ require('plugin.status_bar') -- lualine
 require('plugin.tog_term') --terminal
 require('plugin.git_signs') --git signs
 require('general.colorscheme')
-
-
-
-
-
-
-
+if(vim.g.neovide) then
+    vim.cmd([[
+        set guifont=Comic\ Code\ Ligatures:h13
+    ]])
+    vim.g.neovide_transparency = 0.6
+end

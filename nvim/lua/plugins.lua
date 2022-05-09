@@ -41,92 +41,6 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
-  --[[scroll bar]]
-    use{
-        "petertriho/nvim-scrollbar",
-        config = function ()
-          require("scrollbar").setup({--{{{
-              show = true,
-              set_highlights = true,
-              folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
-              max_lines = false, -- disables if no. of lines in buffer exceeds this
-              handle = {
-                  text = " ",
-                  color = nil,
-                  cterm = nil,
-                  highlight = "CursorColumn",
-                  hide_if_all_visible = true, -- Hides handle if all lines are visible
-              },
-              marks = {
-                  Search = {
-                      text = { "-", "=" },
-                      priority = 0,
-                      color = nil,
-                      cterm = nil,
-                      highlight = "Search",
-                  },
-                  Error = {
-                      text = { "-", "=" },
-                      priority = 1,
-                      color = nil,
-                      cterm = nil,
-                      highlight = "DiagnosticVirtualTextError",
-                  },
-                  Warn = {
-                      text = { "-", "=" },
-                      priority = 2,
-                      color = nil,
-                      cterm = nil,
-                      highlight = "DiagnosticVirtualTextWarn",
-                  },
-                  Info = {
-                      text = { "-", "=" },
-                      priority = 3,
-                      color = nil,
-                      cterm = nil,
-                      highlight = "DiagnosticVirtualTextInfo",
-                  },
-                  Hint = {
-                      text = { "-", "=" },
-                      priority = 4,
-                      color = nil,
-                      cterm = nil,
-                      highlight = "DiagnosticVirtualTextHint",
-                  },
-                  Misc = {
-                      text = { "-", "=" },
-                      priority = 5,
-                      color = nil,
-                      cterm = nil,
-                      highlight = "Normal",
-                  },
-              },
-              excluded_buftypes = {
-                  "terminal",
-              },
-              excluded_filetypes = {
-                  "prompt",
-                  "TelescopePrompt",
-              },
-              autocmd = {
-                  render = {
-                      "BufWinEnter",
-                      "TabEnter",
-                      "TermEnter",
-                      "WinEnter",
-                      "CmdwinLeave",
-                      "TextChanged",
-                      "VimResized",
-                      "WinScrolled",
-                  },
-              },
-              handlers = {
-                  diagnostic = true,
-                  search = false, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
-              },
-          })--}}}
-        end
-    }
   --[[better hlsearch]]
     use {
         'kevinhwang91/nvim-hlslens',
@@ -180,7 +94,7 @@ return require('packer').startup(function(use)
   --[[multi cursor]]
   use{'mg979/vim-visual-multi',} 
   --[[pretty folds]]
-  --[[ use{
+  use{
     'anuvyklack/pretty-fold.nvim',
     requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
     config = function()
@@ -201,7 +115,7 @@ return require('packer').startup(function(use)
       }
           end
 
-        } ]]
+        }
         --[[whcich Key]]
           use {
             "folke/which-key.nvim",
@@ -533,12 +447,10 @@ return require('packer').startup(function(use)
       'folke/tokyonight.nvim', -- tokyoNight
       "rose-pine/neovim", -- rose pine
       'tiagovla/tokyodark.nvim',
-      'Mofiqul/vscode.nvim', -- codeDark(vsCodeTheme)
       "kvrohit/rasmus.nvim",
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
       { 'navarasu/onedark.nvim'},
       {"https://github.com/dylanaraps/wal.vim"},
-      {'tanvirtin/monokai.nvim'},
       {"AlphaTechnolog/pywal.nvim", as = "pywal"},
       {
           'marko-cerovac/material.nvim',
@@ -585,36 +497,6 @@ return require('packer').startup(function(use)
                     async_loading = true -- Load parts of the theme asyncronously for faster startup (turned on by default)
                 })
           end
-      },
-      {
-        "https://github.com/sainnhe/everforest",
-        config = function ()
-          vim.cmd([[ 
-            let g:everforest_background = 'hard'
-            let g:everforest_transparent_background = 0
-            let g:everforest_enable_bold = 1
-            let g:everforest_ui_contrast = 'high'
-          ]])
-        end
-
-      },
-      {
-        'luisiacc/gruvbox-baby',
-        config = function ()
-          -- Example config in Lua
-          vim.g.gruvbox_baby_function_style = "NONE"
-          vim.g.gruvbox_baby_keyword_style = "italic"
-          -- Each highlight group must follow the structure:
-          -- ColorGroup = {fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)"}
-          -- See also :h highlight-guifg
-          -- Example:
-          vim.g.gruvbox_baby_highlights = {Normal = {fg = "#123123", bg = "NONE", style="underline"}}
-          -- Enable telescope theme
-          vim.g.gruvbox_baby_telescope_theme = 1
-          -- Enable transparent mode
-          vim.g.gruvbox_baby_transparent_mode = 1
-          -- Load the colorscheme
-        end
       },
       --[=[ {
         "sainnhe/gruvbox-material",
@@ -690,7 +572,7 @@ return require('packer').startup(function(use)
       lock = true
     }
   --[[indent line]]
-    use {
+    --[[ use {
       '~/.config/nvim/lua/localPLUG/',
       config = function ()--{{{
         require('localPLUG.indentScope').setup({
@@ -731,7 +613,20 @@ return require('packer').startup(function(use)
           symbol = '⏽',
                 })
       end--}}}
+    } ]]
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function ()
+          vim.opt.list = true
+          require("indent_blankline").setup {
+            space_char_blankline = " ",
+            show_current_context = true,
+            show_current_context_start = true,
+          }
+        end
+
     }
+
   --[[comments]]
     use {
       'numToStr/Comment.nvim',
@@ -744,32 +639,59 @@ return require('packer').startup(function(use)
       requires = 'kyazdani42/nvim-web-devicons'
     } ]]
     use {
-      'kdheepak/tabline.nvim',
-      config = function()
-        require'tabline'.setup {
-          -- Defaults configuration options
-          enable = true,
-          options = {
-          -- If lualine is installed tabline will use separators configured in lualine by default.
-          -- These options can be used to override those settings.
-            section_separators = {'', ''},
-            component_separators = {'', ''},
-            max_bufferline_percent = 100, -- set to nil by default, and it uses vim.o.columns * 2/3
-            show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
-            show_devicons = true, -- this shows devicons in buffer section
-            show_bufnr = false, -- this appends [bufnr] to buffer section,
-            show_filename_only = false, -- shows base filename only instead of relative path in filename
-            modified_icon = "+ ", -- change the default modified icon
-            modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
-            show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
-          } 
+      'romgrk/barbar.nvim',
+      requires = {'kyazdani42/nvim-web-devicons'},
+      config = function ()
+        -- Set barbar's options
+        vim.g.bufferline = {
+          -- Enable/disable animations
+          animation = true,
+          -- Enable/disable auto-hiding the tab bar when there is a single buffer
+          auto_hide = true,
+          -- Enable/disable current/total tabpages indicator (top right corner)
+          tabpages = true,
+          -- Enable/disable close button
+          closable = false,
+          -- Enables/disable clickable tabs
+          --  - left-click: go to buffer
+          --  - middle-click: delete buffer
+          clickable = false,
+          -- Excludes buffers from the tabline
+          icons = true,
+          -- If set, the icon color will follow its corresponding buffer
+          -- highlight group. By default, the Buffer*Icon group is linked to the
+          -- Buffer* group (see Highlighting below). Otherwise, it will take its
+          -- default value as defined by devicons.
+          icon_custom_colors = false,
+          -- Configure icons on the bufferline.
+          icon_separator_active = '▎',
+          icon_separator_inactive = '▎',
+          icon_close_tab = '',
+          icon_close_tab_modified = '●',
+          icon_pinned = '車',
+          -- If true, new buffers will be inserted at the start/end of the list.
+          -- Default is to insert after current buffer.
+          insert_at_end = false,
+          insert_at_start = false,
+
+          -- Sets the maximum padding width with which to surround each tab
+          maximum_padding = 0,
+          -- Sets the maximum buffer name length.
+          maximum_length = 30,
+          -- If set, the letters for each buffer in buffer-pick mode will be
+          -- assigned based on their name. Otherwise or in case all letters are
+          -- already assigned, the behavior is to assign letters in order of
+          -- usability (see order below)
+          semantic_letters = true,
+          -- New buffer letters are assigned in this order. This order is
+          -- optimal for the qwerty keyboard layout but might need adjustement
+          -- for other layouts.
+          letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
+          -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
+          -- where X is the buffer number. But only a static string is accepted here.
+          no_name_title = nil,
         }
-        vim.cmd[=[
-          set guioptions-=e " Use showtabline in gui vim
-          set sessionoptions+=tabpages,globals " store tabpages and globals in session
-        ]=]
-      end,
-      requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+      end
     }
   --[[status bar]]
     use {
