@@ -57,6 +57,13 @@ return require('packer').startup(function(use)
           vim.api.nvim_set_keymap('n', '<Leader>l', ':noh<CR>', kopts)
         end
     }
+  --[[neoscroll]]
+  --[[ use {
+      'karb94/neoscroll.nvim',
+      config = function ()
+        require('neoscroll').setup()
+      end
+  } ]]
   --[[transparent nvim]]
     use {
         'xiyaowong/nvim-transparent',
