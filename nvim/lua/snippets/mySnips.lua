@@ -1,5 +1,4 @@
 local ls = require("luasnip")
-    local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -32,7 +31,6 @@ ls.add_snippets(nil,{
     ls.parser.parse_snippet("h3", "*** $1"),
     ls.parser.parse_snippet("h4", "**** $1"),
     ls.parser.parse_snippet("h5", "***** $1"),
-    ls.parser.parse_snippet("hajime", "* Things i've to take care of\n ** code\n* Pomodoro\n ** breaks\n* Journal\n"),
     ls.parser.parse_snippet("Ud", "#contexts Udvash"),
     ls.parser.parse_snippet("UdEx", "#contexts UdvashExam"),
     ls.parser.parse_snippet("UdExP", "#contexts UdvashExamPrep"),
@@ -40,6 +38,16 @@ ls.add_snippets(nil,{
     ls.parser.parse_snippet("code", "#contexts Code"),
     ls.parser.parse_snippet("pre", "#contexts PreTestPrep"),
     ls.parser.parse_snippet("sHw", "#contexts SchoolHw"),
+    s("hajime",--{{{
+    fmt([=[
+      * Things i've to take care of
+        #time.due 2022-0{1}-{2} 
+        #contexts Todo
+          {3}
+      * Pomodoro
+
+    ]=],{i(1),i(2),i(3)})
+    ),--}}}
     --session future{{{
     s({trig="sF", docstring="sF"},
     {

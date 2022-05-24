@@ -115,6 +115,7 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
     map('i', 'jj', '<ESC>', opts)
     map('i', 'jk', '<ESC>', opts)
     map('i', '<C-ne>', '<ESC>', opts)
+    map('i', '<', '<', opts)
     --[===[visiual mode]===]
     --better indenting
         map('v', "<","<gv", opts)

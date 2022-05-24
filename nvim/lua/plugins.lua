@@ -193,7 +193,7 @@ return require('packer').startup(function(use)
       end--}}}
     }
   --[[discord rich presence]]
-    use{
+    --[[ use{
       'andweeb/presence.nvim',
       lock=true,
       config = function ()--{{{
@@ -218,7 +218,7 @@ return require('packer').startup(function(use)
           line_number_text    = "Line %s out of %s",
         })
       end--}}}
-    }
+    } ]]
   -- [[Lsp Progress]]
     use {
       'j-hui/fidget.nvim',
