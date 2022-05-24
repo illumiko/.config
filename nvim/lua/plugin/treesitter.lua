@@ -54,7 +54,6 @@ require'nvim-treesitter.configs'.setup {
     -- [options]
   },
   ensure_installed = {
-    "norg",
     'javascript',
     'vue',
     'html',

@@ -23,12 +23,12 @@ require('neorg').setup {
     ["core.norg.dirman"] = { -- Manage your directories with Neorg
       config = {
         workspaces = {
-            my_workspace = "~/Documents/neorg/gtd",
+            my_workspace = "~/Documents/norg/gtd/",
             example_gtd = "~/Documents/neorg/example_workspaces/gtd/"
         },
         autochdir = true, -- Automatically change the directory to the current workspace's root every time
         index = "index.norg", -- The name of the main (root) .norg file
-        last_workspace = vim.fn.stdpath("cache") .. "/neorg_last_workspace.txt" -- The location to write and read the workspace cache file 
+        default = vim.fn.getcwd()
       }
     },
     ["core.gtd.base"] = {
