@@ -98,10 +98,6 @@ telescope.setup {
         filetypes = {"png", "webp", "jpg", "jpeg"},
         find_cmd = "rg" -- find command (defaults to `fd`)
       },
-    file_browser = {
-      -- theme = "dropdown",
-    },
-
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
@@ -109,5 +105,4 @@ telescope.setup {
     -- please take a look at the readme of the extension you want to configure
   },
 }
-telescope.load_extension "file_browser"
 telescope.load_extension 'projects'

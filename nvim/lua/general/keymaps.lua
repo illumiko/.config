@@ -48,9 +48,9 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
         map('n', '<leader>hc',':HopChar1<CR>', opts)
         map('n', '<leader>hw',':HopWord<CR>', opts)
 
-    -- [[nvim tree toggle]]
+    -- [[file browser]]
     -- map('n', '<Leader>e',':NvimTreeToggle<CR>', opts)
-        map('n', '<Leader>e',':Telescope file_browser path=%:p:h<CR>', opts)
+        map('n', '<Leader>e',':NeoTreeFocusToggle<CR>', opts)
 
     -- [[no hl]]
         map('n', '<Leader>H',':set hlsearch!<CR>', opts)

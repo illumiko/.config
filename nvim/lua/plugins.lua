@@ -41,35 +41,53 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
-  --[[better hlsearch]]
+
+    --[[function context]]
     use {
-        'kevinhwang91/nvim-hlslens',
-        config = function ()
-          local kopts = {noremap = true, silent = true}
-          vim.api.nvim_set_keymap('n', 'n',
-              [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
-          vim.api.nvim_set_keymap('n', 'N',
-              [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
-          vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-          vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-          vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-          vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-          vim.api.nvim_set_keymap('n', '<Leader>l', ':noh<CR>', kopts)
-        end
+        "https://github.com/haringsrob/nvim_context_vt",
+        config=function ()--{{{
+            require('nvim_context_vt').setup({
+                -- Enable by default. You can disable and use :NvimContextVtToggle to maually enable.
+                -- Default: true
+                enabled = true,
+
+                -- Override default virtual text prefix
+                -- Default: '-->'
+                prefix = '',
+
+                -- Override the internal highlight group name
+                -- Default: 'ContextVt'
+                highlight = 'CustomContextVt',
+
+                -- Disable virtual text for given filetypes
+                -- Default: { 'markdown' }
+                disable_ft = { 'markdown' },
+
+                -- Disable display of virtual text below blocks for indentation based languages like Python
+                -- Default: false
+                disable_virtual_lines = false,
+
+                -- Same as above but only for spesific filetypes
+                -- Default: {}
+                disable_virtual_lines_ft = { 'yaml' },
+
+                -- How many lines required after starting position to show virtual text
+                -- Default: 1 (equals two lines total)
+                min_rows = 1,
+
+                -- Same as above but only for spesific filetypes
+                -- Default: {}
+                min_rows_ft = {},
+            })
+            vim.cmd([[hi CustomContextVt guifg=#444444]])
+        end--}}}
     }
-  --[[neoscroll]]
-  --[[ use {
-      'karb94/neoscroll.nvim',
-      config = function ()
-        require('neoscroll').setup()
-      end
-  } ]]
   --[[transparent nvim]]
     use {
         'xiyaowong/nvim-transparent',
         config = function ()
-          require("transparent").setup({
-            enable = true, -- boolean: enable transparent
+          require("transparent").setup({--{{{
+            enable = false, -- boolean: enable transparent
             extra_groups = { -- table/string: additional groups that should be cleared
               -- In particular, when you set it to 'all', that means all available groups
               -- example of akinsho/nvim-bufferline.lua
@@ -82,7 +100,7 @@ return require('packer').startup(function(use)
             },
             exclude = {}, -- table: groups you don't want to clear
           })
-        end
+        end--}}}
     }
     use {
       'lewis6991/impatient.nvim',
@@ -104,7 +122,7 @@ return require('packer').startup(function(use)
   use{
     'anuvyklack/pretty-fold.nvim',
     requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
-    config = function()
+    config = function()--{{{
       require('pretty-fold').setup{
          keep_indentation = false,
          fill_char = '━',
@@ -120,15 +138,14 @@ return require('packer').startup(function(use)
       require('pretty-fold.preview').setup {
          key = 'h', -- choose 'h' or 'l' key
       }
-          end
-
-        }
+          end--}}}
+    }
         --[[whcich Key]]
-          use {
-            "folke/which-key.nvim",
-            config = function()
-              require("which-key").setup({})
-      end
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup({})
+        end
     }
 
   --[[window picker]]
@@ -427,7 +444,24 @@ return require('packer').startup(function(use)
       requires = { {'nvim-lua/plenary.nvim'} }
     }
   --[[file browser]]
-    use { "nvim-telescope/telescope-file-browser.nvim" }
+  use {
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    config = function ()
+        require("neo-tree").setup({
+            window = {
+              position = "left",
+              width = 20,
+            }
+        })
+    end
+  }
+    -- use { "nvim-telescope/telescope-file-browser.nvim" }
 
   --[[color preview]]
     use {
@@ -450,17 +484,27 @@ return require('packer').startup(function(use)
   --[[colorscheme]]
     use{
       lock=true,
-      'rmehri01/onenord.nvim', -- oneNord
       'folke/tokyonight.nvim', -- tokyoNight
-      "rose-pine/neovim", -- rose pine
       'tiagovla/tokyodark.nvim',
+      {"EdenEast/nightfox.nvim", 
+        config = function ()
+            require('nightfox').setup({
+              options = {
+                dim_inactive = false,
+                styles = {
+                  comments = "italic",
+                  keywords = "bold",
+                  types = "italic,bold",
+                }
+              }
+            })
+        end
+      },
       "kvrohit/rasmus.nvim",
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
       { 'navarasu/onedark.nvim'},
-      {"https://github.com/dylanaraps/wal.vim"},
-      {"AlphaTechnolog/pywal.nvim", as = "pywal"},
       {
-          'marko-cerovac/material.nvim',
+          'marko-cerovac/material.nvim',--{{{
           config = function ()
               require('material').setup({
                     contrast = {
@@ -503,7 +547,7 @@ return require('packer').startup(function(use)
 
                     async_loading = true -- Load parts of the theme asyncronously for faster startup (turned on by default)
                 })
-          end
+          end--}}}
       },
       --[=[ {
         "sainnhe/gruvbox-material",
@@ -648,7 +692,7 @@ return require('packer').startup(function(use)
     use {
       'romgrk/barbar.nvim',
       requires = {'kyazdani42/nvim-web-devicons'},
-      config = function ()
+      config = function ()--{{{
         -- Set barbar's options
         vim.g.bufferline = {
           -- Enable/disable animations
@@ -698,7 +742,7 @@ return require('packer').startup(function(use)
           -- where X is the buffer number. But only a static string is accepted here.
           no_name_title = nil,
         }
-      end
+      end--}}}
     }
   --[[status bar]]
     use {

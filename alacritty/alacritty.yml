@@ -15,13 +15,19 @@ font:
     x: 1
     y: 2
   normal:
-    family: Comic Code Ligatures 
+    family: Victor Mono Nerd Font
     style: Normal
+    # family: Comic Code Ligatures 
+    # style: Normal
   bold:
-    family: Comic Code Ligatures 
+    family: Victor Mono Nerd Font
     style: Bold
+    # family: Comic Code Ligatures 
+    # style: Bold
   italic:
-    family: Comic Code Ligatures 
+    # family: Comic Code Ligatures 
+    # style: italic
+    family: Victor Mono Nerd Font
     style: italic
 colors:
   normal:

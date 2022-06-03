@@ -1,9 +1,9 @@
--- tokyodark {{{
+-- -- tokyodark {{{
 -- vim.g.tokyodark_transparent_background = true
-vim.g.tokyodark_enable_italic_comment = true
-vim.g.tokyodark_enable_italic = true
-vim.g.tokyodark_color_gamma = "1"
---}}}
+-- vim.g.tokyodark_enable_italic_comment = true
+-- vim.g.tokyodark_enable_italic = true
+-- vim.g.tokyodark_color_gamma = "1"
+-- --}}}
 --[[ --tokyonight{{{
 vim.g.tokyonight_style = 'storm'
 vim.g.tokyonight_transparent = true
@@ -49,9 +49,12 @@ vim.cmd([=[colorscheme tokyonight]=])
 -- vim.cmd([[
 --     colorscheme material
 -- ]])--}}}
--- vim.cmd("colorscheme rasmus")
+-- rasmus{{{
 vim.cmd([=[
-colorscheme tokyodark
-hi BufferTabpageFill guibg=none
-]=])
+colorscheme rasmus
+hi CmpItemKindSnippet guifg=#7bb099
+hi CmpItemKindText guifg=#d1d1d1
+hi CmpItemKindKeyword guifg=#ffc591
+]=])--}}}
+vim.cmd("hi CustomContextVt guifg=#444444")
 
