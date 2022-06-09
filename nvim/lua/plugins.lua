@@ -41,8 +41,14 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
-
-    --[[function context]]
+  --[[advance spell checker]]
+    use {
+      'lewis6991/spellsitter.nvim',
+      config = function()
+        require('spellsitter').setup()
+      end
+    }
+  --[[function context]]
     use {
         "https://github.com/haringsrob/nvim_context_vt",
         config=function ()--{{{
@@ -455,8 +461,8 @@ return require('packer').startup(function(use)
     config = function ()
         require("neo-tree").setup({
             window = {
-              position = "left",
-              width = 20,
+              position = "right",
+              width = 25,
             }
         })
     end
@@ -484,6 +490,16 @@ return require('packer').startup(function(use)
   --[[colorscheme]]
     use{
       lock=true,
+      {
+        "https://github.com/Shatur/neovim-ayu",
+        cofig = function ()
+            require('ayu').setup({
+              mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+              overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+          })
+        end
+      },
+      "clpi/cyu.lua",
       'folke/tokyonight.nvim', -- tokyoNight
       'tiagovla/tokyodark.nvim',
       {"EdenEast/nightfox.nvim", 
