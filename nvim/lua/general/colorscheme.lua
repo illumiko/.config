@@ -44,11 +44,11 @@ vim.cmd([=[colorscheme tokyonight]=])
 -- }
 -- vim.cmd('colorscheme onedark')
 -- --}}}
--- --material{{{
--- vim.g.material_style = 'deep ocean'
--- vim.cmd([[
---     colorscheme material
--- ]])--}}}
+--material{{{
+vim.g.material_style = 'darker'
+vim.cmd([[
+    colorscheme material
+]])--}}}
 --[[ -- rasmus{{{
 vim.cmd([=[
 colorscheme rasmus
@@ -56,12 +56,7 @@ hi CmpItemKindSnippet guifg=#7bb099
 hi CmpItemKindText guifg=#d1d1d1
 hi CmpItemKindKeyword guifg=#ffc591
 ]=])--}}} ]]
---[[ vim.cmd([=[{{{
-colorscheme ayu-mirage
-hi LspReferenceRead guibg=#ffcc66 guifg=#000000
-hi LspReferenceWrite guibg=#ffcc66 guifg=#000000
-]=]) ]]--}}}
+vim.g.catppuccin_flavour = "mocha"
 vim.cmd([=[
-colorscheme cayu
 hi CustomContextVt guifg=#444444]=])
 

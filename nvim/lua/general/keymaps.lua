@@ -5,6 +5,9 @@ vim.g.mapleader = ' '
 
 vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
 --[===[normal mode]===]
+--  
+    --[[focus Management]]
+        map('n', '<C-f>', ':FocusMaximise <CR>', opts)
     --[[hjkl movement in colemak]]
         map('n', '<C-h>', 'h', opts)
         map('n', '<C-n>', 'j', opts)
@@ -35,6 +38,11 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
         map('n', '<leader>Sd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
         map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
         map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+        --[[goto def float]]
+          map("n", "gdd",":lua require('goto-preview').goto_preview_definition()<cr>",opts)
+          map("n", "gdi",":lua require('goto-preview').goto_preview_implementation()<cr>",opts)
+          map("n", "gdc",":lua require('goto-preview').close_all_win()<cr>",opts)
+          map("n", "gdr",":lua require('goto-preview').goto_preview_references()<cr>",opts)
 
     -- [[packer stuff]]
         map('n', '<leader>Pi',':PackerInstall<CR>', opts)

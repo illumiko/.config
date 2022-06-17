@@ -41,6 +41,11 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
+    -- use { 'fgheng/winbar.nvim' }
+    use {
+      "SmiteshP/nvim-gps",
+      requires = "nvim-treesitter/nvim-treesitter"
+    }
   --[[advance spell checker]]
     use {
       'lewis6991/spellsitter.nvim',
@@ -123,7 +128,7 @@ return require('packer').startup(function(use)
     lock=true
   }
   --[[multi cursor]]
-  use{'mg979/vim-visual-multi',} 
+  use{'mg979/vim-visual-multi',}
   --[[pretty folds]]
   use{
     'anuvyklack/pretty-fold.nvim',
@@ -216,7 +221,7 @@ return require('packer').startup(function(use)
       end--}}}
     }
   --[[discord rich presence]]
-    --[[ use{
+    use{
       'andweeb/presence.nvim',
       lock=true,
       config = function ()--{{{
@@ -228,7 +233,7 @@ return require('packer').startup(function(use)
           client_id           = "793271441293967371",
           log_level           = nil,
           debounce_timeout    = 10,
-          enable_line_number  = false, 
+          enable_line_number  = false,
           blacklist           = {},
           buttons             = true,
           -- Rich Presence text options
@@ -241,7 +246,7 @@ return require('packer').startup(function(use)
           line_number_text    = "Line %s out of %s",
         })
       end--}}}
-    } ]]
+    }
   -- [[Lsp Progress]]
     use {
       'j-hui/fidget.nvim',
@@ -275,36 +280,12 @@ return require('packer').startup(function(use)
               [[⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁]],
               [[⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿]],
           }
-          -- dashboard.section.top_buttons.val = {
-          --     dashboard.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
-          -- }
-          -- disable MRU
-          -- dashboard.section.mru.val = { { type = "padding", val = 0 } }
-          -- disable MRU cwd
-          -- dashboard.section.mru_cwd.val = { { type = "padding", val = 0 } }
-          -- disable nvim_web_devicons
-          -- dashboard.nvim_web_devicons.enabled = false
-          -- dashboard.nvim_web_devicons.highlight = false
-          -- dashboard.nvim_web_devicons.highlight = 'Keyword'
-          --
-          -- dashboard.section.bottom_buttons.val = {
-          --     dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
-          -- }
-          -- dashboard.section.footer = {
-          --     { type = "text", val = "footer" },
-          -- }
-          -- ignore filetypes in MRU
-          -- dashboard.mru_opts.ignore = function(path, ext)
-          --     return
-          --             (string.find(path, "COMMIT_EDITMSG"))
-          --         or  (vim.tbl_contains(default_mru_ignore, ext))
-          -- end
           alpha.setup(dashboard.opts)
       end
     }--}}}
 
   --[[focus]]
-    use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
+    use { "beauwilliams/focus.nvim", config = function() require("focus").setup({width=95}) end }
 
   --[[session]]
     use "tpope/vim-obsession"
@@ -412,12 +393,12 @@ return require('packer').startup(function(use)
     use {
       'edluffy/specs.nvim',
       config = function ()
-        require('specs').setup{ 
+        require('specs').setup{
           show_jumps  = true,
           min_jump = 30,
           popup = {
               delay_ms = 0, -- delay before popup displays
-              inc_ms = 10, -- time increments used for fade/resize effects 
+              inc_ms = 10, -- time increments used for fade/resize effects
               blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
               width = 10,
               winhl = "PMenu",
@@ -446,27 +427,70 @@ return require('packer').startup(function(use)
 
   --[[Telescope]]
     use {
-      'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} }
+      {
+          'nvim-telescope/telescope.nvim',
+          requires = { {'nvim-lua/plenary.nvim'} }
+      },
+      { 'JoseConseco/telescope_sessions_picker.nvim', }, -- session picker
     }
   --[[file browser]]
-  use {
-  "nvim-neo-tree/neo-tree.nvim",
+  use { "nvim-neo-tree/neo-tree.nvim",--{{{
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
     config = function ()
         require("neo-tree").setup({
-            window = {
-              position = "right",
-              width = 25,
+          window = {
+            position = "right",
+            width = 30,
+          } ,
+          indent = {
+            indent_size = 2,
+            padding = 1, -- extra padding on left hand side
+            -- indent guides
+            with_markers = true,
+            indent_marker = "│",
+            last_indent_marker = "└",
+            highlight = "NeoTreeIndentMarker",
+            -- expander config, needed for nesting files
+            with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
+            expander_collapsed = "",
+            expander_expanded = "",
+            expander_highlight = "NeoTreeExpander",
+          },
+          filesystem = {
+            filtered_items = {
+              visible = false, -- when true, they will just be displayed differently than normal items
+              hide_dotfiles = false,
+              hide_gitignored = false,
+              hide_hidden = false, -- only works on Windows for hidden files/directories
+              hide_by_name = {
+                --"node_modules"
+              },
+              hide_by_pattern = { -- uses glob style patterns
+                --"*.meta"
+              },
+              never_show = { -- remains hidden even if visible is toggled to true
+                --".DS_Store",
+                --"thumbs.db"
+              },
             }
+          },
+          follow_current_file = true, -- This will find and focus the file in the active buffer every
+          hijack_netrw_behavior = "open_current",
+          use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
+          buffers = {
+            follow_current_file = true, -- This will find and focus the file in the active buffer every
+                                         -- time the current file is changed while the tree is open.
+            group_empty_dirs = true, -- when true, empty folders will be grouped together
+            show_unloaded = true,
+          }
         })
     end
-  }
+  }--}}}
     -- use { "nvim-telescope/telescope-file-browser.nvim" }
 
   --[[color preview]]
@@ -490,19 +514,85 @@ return require('packer').startup(function(use)
   --[[colorscheme]]
     use{
       lock=true,
-      {
-        "https://github.com/Shatur/neovim-ayu",
-        cofig = function ()
-            require('ayu').setup({
-              mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-              overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-          })
-        end
-      },
+      { "catppuccin/nvim",--{{{
+          config = function ()
+             local catppuccin = require("catppuccin")
+            catppuccin.setup({
+                transparent_background = true,
+                term_colors = false,
+                styles = {
+                    comments = "italic",
+                    conditionals = "italic",
+                    loops = "NONE",
+                    functions = "italic",
+                    keywords = "bold",
+                    strings = "NONE",
+                    variables = "italic",
+                    numbers = "NONE",
+                    booleans = "NONE",
+                    properties = "italic",
+                    types = "NONE",
+                    operators = "italic",
+                },
+                integrations = {
+                    treesitter = true,
+                    native_lsp = {
+                        enabled = true,
+                        virtual_text = {
+                            errors = "italic",
+                            hints = "italic",
+                            warnings = "italic",
+                            information = "italic",
+                        },
+                        underlines = {
+                            errors = "underline",
+                            hints = "underline",
+                            warnings = "underline",
+                            information = "underline",
+                        },
+                    },
+                    lsp_trouble = false,
+                    cmp = true,
+                    lsp_saga = true,
+                    gitgutter = false,
+                    gitsigns = true,
+                    telescope = true,
+                    nvimtree = {
+                        enabled = true,
+                        show_root = false,
+                        transparent_panel = false,
+                    },
+                    neotree = {
+                        enabled = true,
+                        show_root = false,
+                        transparent_panel = false,
+                    },
+                    which_key = true,
+                    indent_blankline = {
+                        enabled = true,
+                        colored_indent_levels = true,
+                    },
+                    dashboard = true,
+                    neogit = false,
+                    vim_sneak = false,
+                    fern = false,
+                    barbar = false,
+                    bufferline = true,
+                    markdown = true,
+                    lightspeed = false,
+                    ts_rainbow = true,
+                    hop = true,
+                    notify = true,
+                    telekasten = false,
+                    symbols_outline = true,
+                }
+            })
+
+          end },--}}}
       "clpi/cyu.lua",
       'folke/tokyonight.nvim', -- tokyoNight
       'tiagovla/tokyodark.nvim',
-      {"EdenEast/nightfox.nvim", 
+      {"EdenEast/nightfox.nvim", --{{{
         config = function ()
             require('nightfox').setup({
               options = {
@@ -514,13 +604,11 @@ return require('packer').startup(function(use)
                 }
               }
             })
-        end
-      },
+        end } ,--}}}
       "kvrohit/rasmus.nvim",
       -- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
       { 'navarasu/onedark.nvim'},
-      {
-          'marko-cerovac/material.nvim',--{{{
+      { 'marko-cerovac/material.nvim',--{{{
           config = function ()
               require('material').setup({
                     contrast = {
@@ -563,21 +651,9 @@ return require('packer').startup(function(use)
 
                     async_loading = true -- Load parts of the theme asyncronously for faster startup (turned on by default)
                 })
-          end--}}}
-      },
-      --[=[ {
-        "sainnhe/gruvbox-material",
-        config = function ()--{{{
-          vim.cmd([[ 
-            let g:gruvbox_material_background = 'soft'
-            let g:gruvbox_material_transparent_background = 0
-            let g:gruvbox_material_enable_bold = 1
-            let g:gruvbox_material_ui_contrast = 'high'
-          ]])
-        end--}}}
-      }, --gruvbox ]=]
-      { "rebelot/kanagawa.nvim",
-        config = function ()--{{{
+          end }, --}}}
+      { "rebelot/kanagawa.nvim",--{{{
+        config = function ()
         require('kanagawa').setup({
           undercurl = false,           -- enable undercurls
           commentStyle = "italic",
@@ -587,15 +663,13 @@ return require('packer').startup(function(use)
           typeStyle = "NONE",
           variablebuiltinStyle = "italic",
           specialReturn = true,       -- special highlight for the return keyword
-          specialException = true,    -- special highlight for exception handling keywords 
+          specialException = true,    -- special highlight for exception handling keywords
           transparent = false,        -- do not set background color
           dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
           colors = {},
           overrides = {},
           })
-        end
-      --}}}
-      } -- kangawa
+        end } -- kangawa}}}
     }
 
   --[[treesitter]]
@@ -610,7 +684,30 @@ return require('packer').startup(function(use)
       lock=true,
       'neovim/nvim-lspconfig', --lsp base
       'williamboman/nvim-lsp-installer' --auto lsp installer
-    } 
+    }
+  --[[formatter]]
+    use {'mhartington/formatter.nvim',}
+  --[[goto def float]]
+    use {
+      'rmagatti/goto-preview',
+      config = function()
+        require('goto-preview').setup {
+          width = 120; -- Width of the floating window
+          height = 15; -- Height of the floating window
+          border = {"↖", "─" ,"┐", "│", "┘", "─", "└", "│"}; -- Border characters of the floating window
+          default_mappings = false; -- Bind default mappings
+          debug = false; -- Print debug information
+          opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
+          resizing_mappings = false; -- Binds arrow keys to resizing the floating window.
+          post_open_hook = nil; -- A function taking two arguments, a buffer and a window to be ran as a hook.
+          -- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality.
+          focus_on_open = true; -- Focus the floating window when opening it.
+          dismiss_on_move = false; -- Dismiss the floating window when moving the cursor.
+          force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
+          bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
+        }
+      end
+    }
   --[[null-ls]]
     use{
       "jose-elias-alvarez/null-ls.nvim",
