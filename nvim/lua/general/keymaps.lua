@@ -9,10 +9,10 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
     --[[focus Management]]
         map('n', '<C-f>', ':FocusMaximise <CR>', opts)
     --[[hjkl movement in colemak]]
-        map('n', '<C-h>', 'h', opts)
+        map('n', '<C-h>', 'h', opts)--{{{
         map('n', '<C-n>', 'j', opts)
         map('n', '<C-e>', 'k', opts)
-        map('n', '<C-i>', 'l', opts)
+        map('n', '<C-i>', 'l', opts)--}}}
     -- [[better window movemnt]]
         map("n","<leader>w",":lua require('nvim-window').pick()<CR>",opts)
     -- [[Norg]]
@@ -24,10 +24,11 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
         map("n", "k", "gk", opts) ]]
     -- [[telescope]]
         -- map("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-        map("n", "<leader>fFp", "<cmd>lua require('telescope.builtin').find_files({cwd='~/Documents/Projects/'})<CR>", opts) -- opening telescope in Projects dir
-        map("n", "<leader>fFc", "<cmd>lua require('telescope.builtin').find_files({cwd='~/.config/'})<CR>", opts) --  opening telescope in config folder
-        map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts) --  opening telescope in config folder
-        map("n", "<leader>G", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opts) --  opening telescope in config folder
+        map("n", "<leader>ffp", "<cmd>lua require('telescope.builtin').find_files({cwd='~/Documents/Projects/'})<CR>", opts) -- opening telescope in Projects dir
+        map("n", "<leader>ffc", "<cmd>lua require('telescope.builtin').find_files({cwd='~/.config/'})<CR>", opts) --  opening telescope in config folder
+        map("n", "<leader>fff", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts) --  opening telescope in config folder
+        map("n", "<leader>ffo", ":Telescope oldfiles<CR>", opts) --  opening telescope in config folder
+        map("n", "<leader>ffg", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opts) --  opening telescope in config folder
     -- map("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
     -- [[lsp]]
         map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -136,3 +137,5 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
     --moving blocks of code
         map('x', "K",":move '<-2<CR>gv-gv", opts)
         map('x', "J",":move '>+1<CR>gv-gv", opts)
+        vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+        vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })

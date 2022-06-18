@@ -1,5 +1,4 @@
 local dap = require('dap')
-
 local function debugJest(testName, filename)
   print("starting " .. testName .. " in " .. filename)
   dap.run({

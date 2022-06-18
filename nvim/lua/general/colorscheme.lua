@@ -1,54 +1,95 @@
--- -- tokyodark {{{
--- vim.g.tokyodark_transparent_background = true
--- vim.g.tokyodark_enable_italic_comment = true
--- vim.g.tokyodark_enable_italic = true
--- vim.g.tokyodark_color_gamma = "1"
--- --}}}
+--[[ -- tokyodark {{{
+vim.g.tokyodark_transparent_background = true
+vim.g.tokyodark_enable_italic_comment = true
+vim.g.tokyodark_enable_italic = true
+vim.g.tokyodark_color_gamma = "1"
+--}}} ]]
 --[[ --tokyonight{{{
 vim.g.tokyonight_style = 'storm'
 vim.g.tokyonight_transparent = true
 vim.cmd([=[colorscheme tokyonight]=])
 --}}} ]]
--- --onedark--{{{
--- require('onedark').setup  {
---     -- Main options --
---     style = 'warmer', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
---     transparent = false,  -- Show/hide background
---     term_colors = true, -- Change terminal color as per the selected theme style
---     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
---     -- toggle theme style ---
---     toggle_style_key = '<leader>ts', -- Default keybinding to toggle
---     toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
---
---     -- Change code style ---
---     -- Options are italic, bold, underline, none
---     -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
---     code_style = {
---         comments = 'italic',
---         keywords = 'none',
---         functions = 'none',
---         strings = 'none',
---         variables = 'none'
---     },
---
---     -- Custom Highlights --
---     colors = {}, -- Override default colors
---     highlights = {}, -- Override highlight groups
---
---     -- Plugins Config --
---     diagnostics = {
---         darker = true, -- darker colors for diagnostic
---         undercurl = true,   -- use undercurl instead of underline for diagnostics
---         background = true,    -- use background color for virtual text
---     },
--- }
--- vim.cmd('colorscheme onedark')
--- --}}}
+--[[ --onedark--{{{
+require('onedark').setup  {
+    -- Main options --
+    style = 'warmer', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    transparent = false,  -- Show/hide background
+    term_colors = true, -- Change terminal color as per the selected theme style
+    ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+    -- toggle theme style ---
+    toggle_style_key = '<leader>ts', -- Default keybinding to toggle
+    toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
+
+    -- Change code style ---
+    -- Options are italic, bold, underline, none
+    -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
+    code_style = {
+        comments = 'italic',
+        keywords = 'none',
+        functions = 'none',
+        strings = 'none',
+        variables = 'none'
+    },
+
+    -- Custom Highlights --
+    colors = {}, -- Override default colors
+    highlights = {}, -- Override highlight groups
+
+    -- Plugins Config --
+    diagnostics = {
+        darker = true, -- darker colors for diagnostic
+        undercurl = true,   -- use undercurl instead of underline for diagnostics
+        background = true,    -- use background color for virtual text
+    },
+}
+vim.cmd('colorscheme onedark')
+--}}} ]]
 --material{{{
-vim.g.material_style = 'darker'
-vim.cmd([[
+require("material").setup({
+	contrast = {
+		sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+		floating_windows = true, -- Enable contrast for floating windows
+		line_numbers = true, -- Enable contrast background for line numbers
+		sign_column = false, -- Enable contrast background for the sign column
+		cursor_line = true, -- Enable darker background for the cursor line
+		non_current_windows = true, -- Enable darker background for non-current windows
+		popup_menu = true, -- Enable lighter background for the popup menu
+	},
+
+	italics = {
+		comments = true, -- Enable italic comments
+		keywords = true, -- Enable italic keywords
+		functions = false, -- Enable italic functions
+		strings = false, -- Enable italic strings
+		variables = false, -- Enable italic variables
+	},
+
+	contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
+		"terminal", -- Darker terminal background
+		"packer", -- Darker packer background
+		"qf", -- Darker qf list background
+	},
+
+	high_visibility = {
+		lighter = true, -- Enable higher contrast text for lighter style
+		darker = true, -- Enable higher contrast text for darker style
+	},
+
+	disable = {
+		borders = false, -- Disable borders between verticaly split windows
+		background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
+		term_colors = false, -- Prevent the theme from setting terminal colors
+		eob_lines = false, -- Hide the end-of-buffer lines
+	},
+
+	lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
+
+	async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
+})
+vim.g.material_style = "darker"
+vim.cmd([=[
     colorscheme material
-]])--}}}
+]=]) --}}}
 --[[ -- rasmus{{{
 vim.cmd([=[
 colorscheme rasmus
@@ -56,7 +97,92 @@ hi CmpItemKindSnippet guifg=#7bb099
 hi CmpItemKindText guifg=#d1d1d1
 hi CmpItemKindKeyword guifg=#ffc591
 ]=])--}}} ]]
-vim.g.catppuccin_flavour = "mocha"
-vim.cmd([=[
-hi CustomContextVt guifg=#444444]=])
-
+--[[ --catppuccin--{{{
+local catppuccin = require("catppuccin")
+catppuccin.setup({
+	transparent_background = true,
+	term_colors = false,
+	styles = {
+		comments = "italic",
+		conditionals = "italic",
+		loops = "NONE",
+		functions = "italic",
+		keywords = "bold",
+		strings = "NONE",
+		variables = "italic",
+		numbers = "NONE",
+		booleans = "NONE",
+		properties = "italic",
+		types = "NONE",
+		operators = "italic",
+	},
+	integrations = {
+		treesitter = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = "italic",
+				hints = "italic",
+				warnings = "italic",
+				information = "italic",
+			},
+			underlines = {
+				errors = "underline",
+				hints = "underline",
+				warnings = "underline",
+				information = "underline",
+			},
+		},
+		lsp_trouble = false,
+		cmp = true,
+		lsp_saga = true,
+		gitgutter = false,
+		gitsigns = true,
+		telescope = true,
+		nvimtree = {
+			enabled = true,
+			show_root = false,
+			transparent_panel = false,
+		},
+		neotree = {
+			enabled = true,
+			show_root = false,
+			transparent_panel = false,
+		},
+		which_key = true,
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = true,
+		},
+		dashboard = true,
+		neogit = false,
+		vim_sneak = false,
+		fern = false,
+		barbar = false,
+		bufferline = true,
+		markdown = true,
+		lightspeed = false,
+		ts_rainbow = true,
+		hop = true,
+		notify = true,
+		telekasten = false,
+		symbols_outline = true,
+	},
+})
+vim.g.catppuccin_flavour = "mocha"--}}} ]]
+--[[ --kanagawa{{{
+require("kanagawa").setup({
+	undercurl = false, -- enable undercurls
+	commentStyle = { italic = true },
+	functionStyle = { italic = true },
+	keywordStyle = { bold = true },
+	statementStyle = { bold = true },
+	typeStyle = {},
+	variablebuiltinStyle = { italic = true },
+	specialReturn = true, -- special highlight for the return keyword
+	specialException = true, -- special highlight for exception handling keywords
+	transparent = false, -- do not set background color
+	dimInactive = true, -- dim inactive window `:h hl-NormalNC`
+	colors = {},
+	overrides = {},
+})--}}} ]]

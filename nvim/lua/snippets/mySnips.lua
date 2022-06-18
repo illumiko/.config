@@ -95,7 +95,7 @@ ls.add_snippets(nil,{
         end
         return " " .. result.adder()
       end),
-      t({"","  > "}), i(0)
+      t({"","> "}), i(0)
     }),--}}}
     --session past{{{
     s({trig="sP", docstring="sP"},
@@ -143,7 +143,7 @@ ls.add_snippets(nil,{
         end
         return " " .. result.adder()
       end),
-      t({"","  > "}), i(0)
+      t({"","> "}), i(0)
     }),--}}}
 --}}}
   },
