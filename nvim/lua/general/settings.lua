@@ -48,5 +48,4 @@ vim.opt.laststatus = 3
 -- vim.textwidth = 120--{{{
 -- vim.opt.relativenumber = true
 vim.opt.foldmethod = "marker"--}}}
-vim.cmd[[set nocursorline]]
 vim.cmd([[hi VertSplit guibg=none guifg=none]])

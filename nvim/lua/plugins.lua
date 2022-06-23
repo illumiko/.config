@@ -47,13 +47,16 @@ return require("packer").startup(function(use)
 		config = function()
 			require("modes").setup({
 				colors = {
-					copy = "#ff9800",
-					delete = "#ef7278",
-					insert = "#beec8d",
-					visual = "#c695ec",
+					copy = "#ffcb6b",
+					delete = "#f07178",
+					insert = "#c3e88d",
+					visual = "#c792ea",
 				},
 			})
 		end,
+	})
+	use({
+		"matze/vim-move",
 	})
 	use({
 		"SmiteshP/nvim-gps",
@@ -144,6 +147,7 @@ return require("packer").startup(function(use)
 	--[[whcich Key]]
 	use({
 		"folke/which-key.nvim",
+        lock = true
 	})
 
 	--[[window picker]]
@@ -377,15 +381,15 @@ return require("packer").startup(function(use)
 		config = function()
 			require("specs").setup({
 				show_jumps = true,
-				min_jump = 30,
+				min_jump = 10,
 				popup = {
-					delay_ms = 0, -- delay before popup displays
-					inc_ms = 10, -- time increments used for fade/resize effects
-					blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
-					width = 10,
-					winhl = "PMenu",
-					fader = require("specs").linear_fader,
-					resizer = require("specs").shrink_resizer,
+					delay_ms = 4, -- delay before popup displays
+					inc_ms = 5, -- time increments used for fade/resize effects
+					blend = 20, -- starting blend, between 0-100 (fully transparent), see :h winblend
+					width = 5,
+					winhl = "TermCursor",
+					fader = require("specs").exp_fader,
+					resizer = require("specs").slide_resizer,
 				},
 				ignore_filetypes = {},
 				ignore_buftypes = {
@@ -396,10 +400,6 @@ return require("packer").startup(function(use)
 	})
 
 	--[[matchup]]
-	use({
-		"andymass/vim-matchup",
-		lock = true,
-	})
 
 	--[[same text change fast]]
 	use({
@@ -417,12 +417,9 @@ return require("packer").startup(function(use)
 	})
 	--[[file browser]]
 	use({
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
+		"kyazdani42/nvim-tree.lua",
 		requires = {
-			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
+			"kyazdani42/nvim-web-devicons", -- optional, for file icons
 		},
 	})
 	-- use { "nvim-telescope/telescope-file-browser.nvim" }
@@ -471,6 +468,8 @@ return require("packer").startup(function(use)
 		"neovim/nvim-lspconfig", --lsp base
 		"williamboman/nvim-lsp-installer", --auto lsp installer
 	})
+	--[[highlight similar words]]
+	use("RRethy/vim-illuminate")
 	--[[formatter]]
 	use({ "mhartington/formatter.nvim" })
 	--[[goto def float]]

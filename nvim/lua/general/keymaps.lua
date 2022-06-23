@@ -6,6 +6,9 @@ vim.g.mapleader = ' '
 vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
 --[===[normal mode]===]
 --  
+--  --[[specs effect on search movement]]
+        map('n', 'n', 'n:lua require("specs").show_specs()<CR>',opts)
+        map('n', 'N', 'N:lua require("specs").show_specs()<CR>',opts)
     --[[focus Management]]
         map('n', '<C-f>', ':FocusMaximise <CR>', opts)
     --[[hjkl movement in colemak]]
@@ -59,7 +62,7 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
 
     -- [[file browser]]
     -- map('n', '<Leader>e',':NvimTreeToggle<CR>', opts)
-        map('n', '<Leader>e',':NeoTreeFocusToggle<CR>', opts)
+        map('n', '<Leader>e',':NvimTreeToggle<CR>', opts)
 
     -- [[no hl]]
         map('n', '<Leader>H',':set hlsearch!<CR>', opts)
@@ -76,10 +79,6 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
         map('n', "<C-Down>",":resize +2<CR>", opts)
         map('n', "<C-Left>",":vertical resize -2<CR>", opts)
         map('n', "<C-Right>",":vertical resize +2<CR>", opts)
-
-    -- [[moving line of code on cursor up /  down]]
-        map('n', "<A-j>",":m .+1<CR>==", opts)
-        map('n', "<A-k>",":m .-2<CR>==", opts)
 
     -- [[bufferline]]
         map('n', '<S-h>', ':BufferPrevious<CR>', opts)
@@ -137,5 +136,3 @@ vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
     --moving blocks of code
         map('x', "K",":move '<-2<CR>gv-gv", opts)
         map('x', "J",":move '>+1<CR>gv-gv", opts)
-        vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
-        vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })

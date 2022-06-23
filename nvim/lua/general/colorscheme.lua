@@ -47,8 +47,8 @@ vim.cmd('colorscheme onedark')
 --material{{{
 require("material").setup({
 	contrast = {
-		sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
-		floating_windows = true, -- Enable contrast for floating windows
+		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+		floating_windows = false, -- Enable contrast for floating windows
 		line_numbers = true, -- Enable contrast background for line numbers
 		sign_column = false, -- Enable contrast background for the sign column
 		cursor_line = true, -- Enable darker background for the cursor line
@@ -58,10 +58,10 @@ require("material").setup({
 
 	italics = {
 		comments = true, -- Enable italic comments
-		keywords = true, -- Enable italic keywords
+		keywords = false, -- Enable italic keywords
 		functions = false, -- Enable italic functions
-		strings = false, -- Enable italic strings
-		variables = false, -- Enable italic variables
+		strings = true, -- Enable italic strings
+		variables = true, -- Enable italic variables
 	},
 
 	contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
@@ -79,14 +79,14 @@ require("material").setup({
 		borders = false, -- Disable borders between verticaly split windows
 		background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
 		term_colors = false, -- Prevent the theme from setting terminal colors
-		eob_lines = false, -- Hide the end-of-buffer lines
+		eob_lines = true, -- Hide the end-of-buffer lines
 	},
 
 	lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
 
 	async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 })
-vim.g.material_style = "darker"
+vim.g.material_style = "oceanic"
 vim.cmd([=[
     colorscheme material
 ]=]) --}}}

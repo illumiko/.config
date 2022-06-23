@@ -2,9 +2,10 @@ require('plugins') --plugins
 require('impatient')
 require('general.settings') --base settings
 require('general.keymaps') --keymaps
+require("plugin.session_manager")
 require("plugin.autosave")
-require('LSP') --Language server xD
-require('plugin.neo_tree') --file manager
+require('plugin.LSP') --Language server xD
+require('plugin.explorer') --file manager
 require("plugin.which_key")
 require('plugin.barbar') --buffer like tabs
 require('plugin.treesitter') --better syntax highlighting
@@ -17,7 +18,7 @@ require('plugin.autopairs')  -- autopair setup
 require('plugin.status_bar') -- lualine
 require('plugin.tog_term') --terminal
 require('plugin.git_signs') --git signs
-require("format.format")
+require("plugin.format.format")
 require('general.colorscheme')
 require('plugin.cursor_context')
 if(vim.g.neovide) then
