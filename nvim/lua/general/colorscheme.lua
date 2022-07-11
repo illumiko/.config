@@ -44,7 +44,7 @@ require('onedark').setup  {
 }
 vim.cmd('colorscheme onedark')
 --}}} ]]
---material{{{
+--[[ --material{{{
 require("material").setup({
 	contrast = {
 		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
@@ -89,18 +89,18 @@ require("material").setup({
 vim.g.material_style = "oceanic"
 vim.cmd([=[
     colorscheme material
-]=]) --}}}
---[[ -- rasmus{{{
+]=]) --}}} ]]
+-- rasmus{{{
 vim.cmd([=[
 colorscheme rasmus
 hi CmpItemKindSnippet guifg=#7bb099
 hi CmpItemKindText guifg=#d1d1d1
 hi CmpItemKindKeyword guifg=#ffc591
-]=])--}}} ]]
+]=]) --}}}
 --[[ --catppuccin--{{{
 local catppuccin = require("catppuccin")
 catppuccin.setup({
-	transparent_background = true,
+	transparent_background = false,
 	term_colors = false,
 	styles = {
 		comments = "italic",
@@ -146,7 +146,7 @@ catppuccin.setup({
 		},
 		neotree = {
 			enabled = true,
-			show_root = false,
+			show_root = true,
 			transparent_panel = false,
 		},
 		which_key = true,
@@ -158,18 +158,20 @@ catppuccin.setup({
 		neogit = false,
 		vim_sneak = false,
 		fern = false,
-		barbar = false,
-		bufferline = true,
+		barbar = true,
+		bufferline = false,
 		markdown = true,
 		lightspeed = false,
 		ts_rainbow = true,
 		hop = true,
-		notify = true,
+		notify = false,
 		telekasten = false,
 		symbols_outline = true,
 	},
 })
-vim.g.catppuccin_flavour = "mocha"--}}} ]]
+vim.g.catppuccin_flavour = "macchiato"
+vim.cmd([=[colorscheme catppuccin]=])
+--}}} ]]
 --[[ --kanagawa{{{
 require("kanagawa").setup({
 	undercurl = false, -- enable undercurls
@@ -186,3 +188,19 @@ require("kanagawa").setup({
 	colors = {},
 	overrides = {},
 })--}}} ]]
+--[[ -- gruvbox{{{
+vim.o.background = "dark" -- or light if you so prefer
+
+require("gruvqueen").setup({
+	config = {
+		disable_bold = true,
+		italic_comments = false,
+		italic_keywords = false,
+		italic_functions = false,
+		italic_variables = false,
+		invert_selection = false,
+		style = "original", -- possible values: 'original', 'mix', 'material'
+		transparent_background = false,
+		-- bg_color = "black",
+	},
+}) --}}} ]]

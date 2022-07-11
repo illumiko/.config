@@ -20,6 +20,7 @@ alias se='du -a ~/.config/* ~/Documents/Projects/* | awk "{print $2}" | fzf | xa
 alias todo='nvim ~/Documents/neorg/gtd/index.norg'
 alias jspg='nvim ~/Documents/Projects/Testing/webDev/playground/app.js'
 alias pypg='nvim ~/Documents/Projects/Testing/python/PPG/playground.py'
+alias gopg="nvim ~/Documents/Projects/Testing/go/playground/pg.go"
 alias shpg='nvim ~/Documents/Projects/Testing/bashScript/playground/playground.sh'
 alias luapg='nvim ~/Documents/Projects/Testing/lua/playground/playground.lua'
 alias tmux='tmux -f ~/.config/tmux/.tmux.conf'

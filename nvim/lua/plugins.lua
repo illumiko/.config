@@ -1,4 +1,5 @@
 ----------------------------------------------
+--
 --[[PLUGINS]]
 ----------------------------------------------
 local fn = vim.fn
@@ -47,10 +48,10 @@ return require("packer").startup(function(use)
 		config = function()
 			require("modes").setup({
 				colors = {
-					copy = "#ffcb6b",
-					delete = "#f07178",
-					insert = "#c3e88d",
-					visual = "#c792ea",
+					visual = "#ffcb6b",
+					insert = "#f07178",
+					delete = "#c3e88d",
+					copy = "#c792ea",
 				},
 			})
 		end,
@@ -59,8 +60,13 @@ return require("packer").startup(function(use)
 		"matze/vim-move",
 	})
 	use({
-		"SmiteshP/nvim-gps",
-		requires = "nvim-treesitter/nvim-treesitter",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
 	})
 	--[[advance spell checker]]
 	use({
@@ -147,7 +153,7 @@ return require("packer").startup(function(use)
 	--[[whcich Key]]
 	use({
 		"folke/which-key.nvim",
-        lock = true
+		lock = true,
 	})
 
 	--[[window picker]]
@@ -203,7 +209,7 @@ return require("packer").startup(function(use)
 		-- lock=true,
 		-- commit='b0b2d07d0ffb25eebc102487a5d0f2b70fa7427e',
 		requires = "nvim-lua/plenary.nvim",
-		lock = true,
+		-- lock = true,
 	})
 	--[[Table Creator]]
 	use({
@@ -252,7 +258,7 @@ return require("packer").startup(function(use)
 			require("fidget").setup({})
 		end,
 	})
-	--use 'windwp/nvim-ts-autotag' --autocompletes html tags
+	use({ "https://github.com/windwp/nvim-ts-autotag" })
 
 	-- [[nvim greeter]]
 	use({ --{{{
@@ -409,12 +415,13 @@ return require("packer").startup(function(use)
 
 	--[[Telescope]]
 	use({
-		{
-			"nvim-telescope/telescope.nvim",
-			requires = { { "nvim-lua/plenary.nvim" } },
-		},
-		{ "JoseConseco/telescope_sessions_picker.nvim" }, -- session picker
+		"nvim-telescope/telescope.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
 	})
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	}) -- session picker
 	--[[file browser]]
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -448,7 +455,15 @@ return require("packer").startup(function(use)
 		"clpi/cyu.lua",
 		"folke/tokyonight.nvim", -- tokyoNight
 		"tiagovla/tokyodark.nvim",
+		{ "Murtaza-Udaipurwala/gruvqueen" },
 		"kvrohit/rasmus.nvim",
+		{
+			"mcchrish/zenbones.nvim",
+			requires = "rktjmp/lush.nvim",
+			-- Optionally install Lush. Allows for more configuration or extending the colorscheme
+			-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+			-- In Vim, compat mode is turned on as Lush only works in Neovim.
+		},
 		-- {'olimorris/onedarkpro.nvim'}, -- onedarkpro
 		{ "navarasu/onedark.nvim" },
 		{ "marko-cerovac/material.nvim" },
@@ -461,6 +476,7 @@ return require("packer").startup(function(use)
 		commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
 		run = ":TSUpdate",
 	})
+	use({ "nvim-treesitter/playground" })
 
 	--[[native lsp stuff]]
 	use({
@@ -479,7 +495,7 @@ return require("packer").startup(function(use)
 			require("goto-preview").setup({
 				width = 120, -- Width of the floating window
 				height = 15, -- Height of the floating window
-				border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
+				border = "rounded", -- Border characters of the floating window
 				default_mappings = false, -- Bind default mappings
 				debug = false, -- Print debug information
 				opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.

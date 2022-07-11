@@ -24,14 +24,14 @@ vim.opt.termguicolors = true -- set term gui colors (most terminals support this
 vim.opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.title = true -- set the title of window to the value of the titlestring
 -- vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
-vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
+vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 300 -- faster completion
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4 -- insert 1 spaces for a tab
-vim.opt.smarttab = true 
+vim.opt.smarttab = true
 vim.opt.cursorline = false -- highlight the current line
 --vim.opt.number = false -- set numbered lines
 vim.opt.relativenumber = true -- set relative numbered lines
@@ -47,5 +47,4 @@ vim.opt.softtabstop = 4
 vim.opt.laststatus = 3
 -- vim.textwidth = 120--{{{
 -- vim.opt.relativenumber = true
-vim.opt.foldmethod = "marker"--}}}
-vim.cmd([[hi VertSplit guibg=none guifg=none]])
+vim.opt.foldmethod = "marker" --}}}

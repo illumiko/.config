@@ -2,7 +2,7 @@ env:
   TERM: xterm-256color
 
 window:
-  opacity: 0.5
+  opacity: 0.4
   dimensions:
     columns: 0
     lines: 0
@@ -13,31 +13,31 @@ font:
   size: 12
   offset:
     x: 1
-    y: 2
+    y: 6
   normal:
-    family: MesloLGLDZ Nerd Font
-    style: Normal
-    # family: Comic Code Ligatures 
+    # family: MesloLGLDZ Nerd Font
     # style: Normal
+    family: Comic Code Ligatures
+    style: Normal
   bold:
-    family: MesloLGLDZ Nerd Font
-    style: Bold
-    # family: Comic Code Ligatures 
+    # family: MesloLGLDZ Nerd Font
     # style: Bold
+    family: Comic Code Ligatures
+    style: Bold
   italic:
-    # family: Comic Code Ligatures 
-    # style: italic
-    family: MesloLGLDZ Nerd Font
+    family: Comic Code Ligatures
     style: italic
+    # family: MesloLGLDZ Nerd Font
+    # style: italic
 shell:
   program: /bin/zsh
 colors:
   normal:
-    black:   "#0F1C39"
-    red:     "#597391"
-    green:   "#3F82A8"
-    yellow:  "#498DB1"
-    blue:    "#758BAD"
-    magenta: "#5AA6CC"
-    cyan:    "#A3ABB0"
-    white:   "#ede1ce"
+    black:   "#242123"
+    red:     "#C8AAAB"
+    green:   "#B0BDDA"
+    yellow:  "#D0B9C8"
+    blue:    "#D9C9D6"
+    magenta: "#E7D0DC"
+    cyan:    "#D5DEEE"
+    white:   "#ece4ea"
