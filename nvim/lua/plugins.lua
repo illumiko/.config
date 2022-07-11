@@ -527,6 +527,7 @@ return require("packer").startup(function(use)
 		"hrsh7th/cmp-path", --cmp source path
 		"hrsh7th/cmp-cmdline", --cmp source cmd
 		"hrsh7th/nvim-cmp", --base of cmp
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"saadparwaiz1/cmp_luasnip", --for snippets
 		"onsails/lspkind-nvim", --customizing cmp
 		lock = true,

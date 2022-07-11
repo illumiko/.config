@@ -1,33 +1,35 @@
+require("lspkind").init({ --{{{
+	symbol_map = {
+		Text = "",
+		Method = "",
+		Function = "",
+		Constructor = "",
+		Field = "",
+		Variable = "",
+		Class = "ﴯ",
+		Interface = "",
+		Module = "",
+		Property = "ﰠ",
+		Unit = "",
+		Value = "",
+		Enum = "",
+		Keyword = "",
+		Snippet = "",
+		Color = "",
+		File = "",
+		Reference = "",
+		Folder = "",
+		EnumMember = "",
+		Constant = "",
+		Struct = "",
+		Event = "",
+		Operator = "",
+		TypeParameter = "",
+	},
+}) --}}}
 --[[Nvim Cmp]]
 local cmp = require("cmp")
 local lspkind = require("lspkind")
-local cmp_kinds = { --{{{
-	Text = "",
-	Method = "",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "ﴯ",
-	Interface = "",
-	Module = "",
-	Property = "ﰠ",
-	Unit = "",
-	Value = "",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "",
-	Operator = "",
-	TypeParameter = "",
-} --}}}
 cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
@@ -54,11 +56,8 @@ cmp.setup({
 		}),
 		-- ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
 	sources = cmp.config.sources({
+		{ name = "nvim_lsp_signature_help" },
 		{ name = "path" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
@@ -76,10 +75,14 @@ cmp.setup({
 		-- { name = 'snippy' }, -- For snippy users.
 	}),
 	formatting = {
-		fields = { "kind", "abbr" },
-		format = function(_, vim_item)
-			vim_item.kind = cmp_kinds[vim_item.kind] or ""
-			return vim_item
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
+			kind.kind = " " .. strings[1] .. "  "
+			kind.menu = "  " .. strings[2] .. " "
+
+			return kind
 		end,
 	},
 	experimental = {

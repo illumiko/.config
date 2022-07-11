@@ -93,6 +93,10 @@ vim.cmd([=[
 -- rasmus{{{
 vim.cmd([=[
 colorscheme rasmus
+hi PmenuSel guibg=#7bb099
+hi LspReferenceRead guibg=#4b4b49 guifg=none
+hi LspReferenceText guibg=#4b4b49 guifg=none
+hi LspReferenceWrtie guibg=#4b4b49 guifg=none
 hi CmpItemKindSnippet guifg=#7bb099
 hi CmpItemKindText guifg=#d1d1d1
 hi CmpItemKindKeyword guifg=#ffc591

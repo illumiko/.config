@@ -17,15 +17,15 @@ font:
   normal:
     # family: MesloLGLDZ Nerd Font
     # style: Normal
-    family: Comic Code Ligatures
+    family: Comic Code Ligatures Nerd Font
     style: Normal
   bold:
     # family: MesloLGLDZ Nerd Font
     # style: Bold
-    family: Comic Code Ligatures
+    family: Comic Code Ligatures Nerd Font
     style: Bold
   italic:
-    family: Comic Code Ligatures
+    family: Comic Code Ligatures Nerd Font
     style: italic
     # family: MesloLGLDZ Nerd Font
     # style: italic
