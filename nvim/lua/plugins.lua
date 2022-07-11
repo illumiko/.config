@@ -48,10 +48,10 @@ return require("packer").startup(function(use)
 		config = function()
 			require("modes").setup({
 				colors = {
-					visual = "#ffcb6b",
-					insert = "#f07178",
-					delete = "#c3e88d",
-					copy = "#c792ea",
+					copy = "#ffc591",
+					delete = "#d1d1d1",
+					insert = "#7bb099",
+					visual = "#9bc6e9",
 				},
 			})
 		end,
@@ -493,9 +493,9 @@ return require("packer").startup(function(use)
 		"rmagatti/goto-preview",
 		config = function()
 			require("goto-preview").setup({
-				width = 120, -- Width of the floating window
-				height = 15, -- Height of the floating window
-				border = "rounded", -- Border characters of the floating window
+				width = 100, -- Width of the floating window
+				height = 20, -- Height of the floating window
+				border = "none", -- Border characters of the floating window
 				default_mappings = false, -- Bind default mappings
 				debug = false, -- Print debug information
 				opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
