@@ -18,7 +18,6 @@ local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
-
 ls.add_snippets(nil,{
     all = {
         ls.parser.parse_snippet("test", "tessssssssst")
@@ -201,7 +200,34 @@ ls.add_snippets(nil,{
         let tx = openReq.result.transaction(`{1}`, "readwrite").objectStore(`{2}`){}
       ]=],{i(1),rep(1),i(0)})
       ),--}}}
-  }
+  },
+  go = {
+      s("fc",--{{{
+      fmta([=[
+        <1>,<2> := <3>
+        if <2> != nil {
+            <4>
+        }
+      ]=],{ i(1,"respond"),
+            i(2,"err"),
+            i(3,"Function_call"),
+            c(4,{fmt("log.Fatal({})", {i(1)}), t({"Handle"})}),
+            })
+      ),--}}}
+      s("fm",--{{{
+      fmta([=[
+          <>
+      ]=],{c(1,{
+                fmt("fmt.Println({})",{i(1)}),
+                fmt("fmt.Printf({})",{i(1)}),
+                })})
+      ),--}}}
+      s("lgf",--{{{
+      fmta([=[
+          log.Fatal(<>)
+      ]=],{i(1,"text"),})
+      ),--}}}
+    }
 })
 --[==[[
 

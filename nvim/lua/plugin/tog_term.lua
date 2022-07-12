@@ -7,9 +7,9 @@ toggleterm.setup({
 	size = 15,
 	open_mapping = [[<c-\>]],
 	hide_numbers = true,
-	shade_filetypes = {},
+	shade_filetypes = { "toggleterm" },
 	shade_terminals = true,
-	shading_factor = 10,
+	shading_factor = 20,
 	start_in_insert = true,
 	insert_mappings = true,
 	persist_size = true,
@@ -17,7 +17,7 @@ toggleterm.setup({
 	close_on_exit = true,
 	shell = "zsh",
 	float_opts = {
-		border = "rounded",
+		border = "none",
 		winblend = 4,
 	},
 	highlights = {
