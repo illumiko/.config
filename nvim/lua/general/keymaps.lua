@@ -3,9 +3,10 @@ local opts = { noremap = true, silent = true }
 map("n", "<Space>", "<NOP>", opts)
 vim.g.mapleader = " "
 
-vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
+-- vim.cmd([[inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
 --[===[normal mode]===]
---
+--[[Source config]]
+map("n","<leader>R", ":source %<cr>", opts)
 --[[specs effect on search movement]]
 map("n", "n", 'n:lua require("specs").show_specs()<CR>', opts)
 map("n", "N", 'N:lua require("specs").show_specs()<CR>', opts)

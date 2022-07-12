@@ -211,15 +211,15 @@ ls.add_snippets(nil,{
       ]=],{ i(1,"respond"),
             i(2,"err"),
             i(3,"Function_call"),
-            c(4,{fmt("log.Fatal({})", {i(1)}), t({"Handle"})}),
+            c(4,{fmta("log.Fatal(<>)", {i(1)}), fmta("<>",i(1,"Handle"))}),
             })
       ),--}}}
       s("fm",--{{{
       fmta([=[
           <>
       ]=],{c(1,{
-                fmt("fmt.Println({})",{i(1)}),
-                fmt("fmt.Printf({})",{i(1)}),
+                fmta("fmt.Println(<>)",{i(1)}),
+                fmta("fmt.Printf(<>)",{i(1)}),
                 })})
       ),--}}}
       s("lgf",--{{{

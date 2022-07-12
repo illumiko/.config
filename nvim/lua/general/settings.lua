@@ -40,11 +40,15 @@ vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shi
 vim.opt.wrap = false -- display lines as one long line
 vim.opt.spell = false
 vim.opt.spelllang = "en"
-vim.opt.scrolloff = 10 -- is one of my fav
+vim.opt.scrolloff = 5 -- use this with zz(centers view)
 vim.opt.sidescrolloff = 40
 -- vim.opt.cindent = true
 vim.opt.softtabstop = 4
 vim.opt.laststatus = 3
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  command = vim.cmd("set formatoptions-=cro"),
+  pattern ="*"
+})
 -- vim.textwidth = 120--{{{
 -- vim.opt.relativenumber = true
 vim.opt.foldmethod = "marker" --}}}
